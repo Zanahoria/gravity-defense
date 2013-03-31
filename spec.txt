@@ -1,0 +1,60 @@
+		GRAVITY DEFENSE
+
+- Categoring game elements
+
+	Actors & World objects :
+		Sun
+		Planets
+		Asteroids
+
+	Constraints :
+		Gravity
+		Collisions
+
+- Description of this game
+
+This game is a tower defense with gravity, the purpose is to protect the sun attacked by asteroids.
+For this reason the player has to create planetes to attract or repulse asteroids, to change their path.
+A level of this game is composed in two phases :
+	-> the tactic phase, the player can :
+		- create planets in orbit around the sun
+		- move the planets already created around this orbit
+		- upgrade planets with some technologies like shields
+		- see where the asteroids will come, and see their path
+	-> the action phase, the player can :
+		- see the asteroid attack
+
+A cycle of this two phases is called a round, at each end of round, the player earns money.
+He can earn more money by destroying the asteroids. The money is used to buy other planets and upgrade them.
+At each rounds, the level is harder, the asteroids have more life points, different types.
+
+- Break down each game elements
+
+	How it looks :
+		Planets, sun : spheres
+		Asteroids : big space rocks
+
+	Behaviour :
+		Planets : they can be upgraded by adding a shield on it, they can be moved on the orbit during the tactic phase
+		Asteroids : the more life points they have, the less attracted by the gravity they are.
+			Asteroid types :
+				-> Normal asteroids
+				-> Splittable asteroids : When the asteroid looses a life point, it splits into two asteroids of a lower level
+				-> UFOs : This spaceships aren't influenced by the gravity, they go straight to the sun
+
+- Actor interactions
+
+	Sun & Planets : planets orbit around the sun
+	Sun & Asteroids : the sun attracts asteroids, it looses life points when it collides with them
+	Planets & Planets : nothing
+	Planets & Asteroids :
+		the planets attract asteroids
+		-> basic planets : the planet looses life points and the asteroid is destroyed
+		-> basic shield planets : the asteroid is destroyed and the shield looses life points
+		-> bouncy shield planets : the asteroid bounce on the shield and the shield looses life points
+		(if the shield has no life points, the planet become a basic planet,
+		 the shield is entirely restored at each end of round)
+	Asteroids & Asteroids :
+		the asteroids loose life points, if they have no life points, they are destroyed
+
+
