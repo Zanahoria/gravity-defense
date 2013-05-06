@@ -1,0 +1,70 @@
+		///////////////////////////////////////////
+		//                                       //
+		//  GRAVITY DEFENSE - Level editor tool  //
+		//                                       //
+		///////////////////////////////////////////
+
++================================+
+|                                |
+| Pierre Nole		12129021 |
+| Quentin Petitfils	12129022 |
+| Matthieu Bertin	12129082 |
+| Gianni Castellani	12129072 |
+|                                |
++================================+
+
+
+======================
+ Return of investment
+======================
+
+* Faster level creation.
+* More levels can be made and tested in a small amount of time, making it easier to balance the game and make it funnier for the players.
+* Easy to use, no need for a programmer to do this job, anyone could make a level.
+* Allow players to make their own levels, thus increasing the replayability without any effort from the developpers part.
+* More replayability means a bigger community, more players.
+
+What:
+	It's a tool, with a fancy graphic interface allowing users to make their own level quickly and easily. 
+
+For who:
+	This tool is made for programmers as well as players. Anyone can make levels and share them all around the world.
+
+Why:
+	Firstly, it makes the job easier for developpers, requiring less resources to design the levels. Secondly, it allows players without any programming background to make their own levels and share them, thus increasing the replayability without any effort from the developpers part.
+
+================
+ Specifications
+================
+
+General settings:
+	initial resources
+	resources earned at each end of round
+	add and delete orbits
+	add and delete rounds
+	add and delete planets
+	possibility to desactivate the creation of the planets
+	possibility to desactivate the upgrades of the planets
+	possibility to desactivate the rotation of the orbits
+
+Orbits:
+	size
+
+Sun & Planets:
+	life
+	gravity
+
+Rounds:
+	title
+	add and delete waves
+
+Waves:
+	add and delete directions
+
+Directions:
+	angle of the direction
+	number of asteroids
+	type of the asteroids
+	attraction coefficient of the asteroids
+	delay before the coming of the asteroids
+
