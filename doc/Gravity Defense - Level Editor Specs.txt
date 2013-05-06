@@ -27,8 +27,10 @@ Why?
 ================
 
 General settings:
-	initial resources
-	resources earned at each end of round
+	set the title of the level
+	set the description of the level (objectives)
+	set the quantity of the initial money
+	set the quantity of money earned at each end of round
 	add and delete orbits
 	add and delete rounds
 	add and delete planets
@@ -37,25 +39,27 @@ General settings:
 	possibility to desactivate the rotation of the orbits
 
 Orbits:
-	size
+	set the size
 
 Sun & Planets:
-	life
-	gravity
+	set the life
+	set the gravity
 
 Rounds:
-	title
+	set the title of a round
 	add and delete waves
 
 Waves:
 	add and delete directions
 
 Directions:
-	angle of the direction
-	number of asteroids
-	type of the asteroids
-	attraction coefficient of the asteroids
-	delay before the coming of the asteroids
+	set the angle of the direction
+	set the number of asteroids
+	set the type of the asteroids
+	set the life of the asteroids
+	set the quantity of money earned when an asteroid is destroyed
+	set the attraction coefficient of the asteroids
+	set delay in second before the coming of the asteroids
 
 ======================
  Return of investment
