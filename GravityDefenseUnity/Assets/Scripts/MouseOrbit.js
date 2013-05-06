@@ -23,13 +23,13 @@ function Start () {
    	if (rigidbody)
 		rigidbody.freezeRotation = true;
 
-	moveCamera();
+	moveCamera(0, 0);
 }
 
-function moveCamera()
+function moveCamera(mousex, mousey)
 {
-	x += Input.GetAxis("Mouse X") * xSpeed * 0.02;
-	y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02;
+	x += mousex * xSpeed * 0.02;
+	y -= mousey * ySpeed * 0.02;
 	
 	y = ClampAngle(y, yMinLimit, yMaxLimit);
 	       
@@ -42,14 +42,14 @@ function moveCamera()
 
 function LateUpdate () {
     if (target && Input.GetMouseButton(1))
-	    moveCamera();
+	    moveCamera(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y"));
     if (Input.GetAxis("Mouse ScrollWheel") > 0)
     {
     	if (distance - 5 < zoomMin)
     		distance = zoomMin;
    		else
 	    	distance -= 5;
-	    moveCamera();
+	    moveCamera(0, 0);
     }
     else if (Input.GetAxis("Mouse ScrollWheel") < 0)
     {
@@ -57,7 +57,7 @@ function LateUpdate () {
     		distance = zoomMax;
    		else
 	    	distance += 5;
-	    moveCamera();
+	    moveCamera(0, 0);
     }
 }
 
