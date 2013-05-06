@@ -13,24 +13,13 @@
 |                                |
 +================================+
 
-
-======================
- Return of investment
-======================
-
-* Faster level creation.
-* More levels can be made and tested in a small amount of time, making it easier to balance the game and make it funnier for the players.
-* Easy to use, no need for a programmer to do this job, anyone could make a level.
-* Allow players to make their own levels, thus increasing the replayability without any effort from the developpers part.
-* More replayability means a bigger community, more players.
-
-What:
+What?
 	It's a tool, with a fancy graphic interface allowing users to make their own level quickly and easily. 
 
-For who:
+For who?
 	This tool is made for programmers as well as players. Anyone can make levels and share them all around the world.
 
-Why:
+Why?
 	Firstly, it makes the job easier for developpers, requiring less resources to design the levels. Secondly, it allows players without any programming background to make their own levels and share them, thus increasing the replayability without any effort from the developpers part.
 
 ================
@@ -68,3 +57,12 @@ Directions:
 	attraction coefficient of the asteroids
 	delay before the coming of the asteroids
 
+======================
+ Return of investment
+======================
+
+* Faster level creation.
+* More levels can be made and tested in a small amount of time, making it easier to balance the game and make it funnier for the players.
+* Easy to use, no need for a programmer to do this job, anyone could make a level.
+* Allow players to make their own levels, thus increasing the replayability without any effort from the developpers part.
+* More replayability means a bigger community, more players.
