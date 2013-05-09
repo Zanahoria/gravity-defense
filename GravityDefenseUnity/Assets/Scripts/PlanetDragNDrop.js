@@ -1,7 +1,7 @@
 #pragma strict
 
 
-public var orbit : pickingorbit = null;
+public var orbit : PickingOrbit = null;
 
 private var isDragging : boolean = false;
 private var lastPoint : Vector3;
@@ -36,7 +36,7 @@ function Update () {
        	var diffAngle = angle - lastAngle;
        	lastAngle = angle;
 		planets = this.orbit.planetTab;
-    	for (var i : dragndrop in planets)
+    	for (var i : PlanetDragNDrop in planets)
     	{
     		if (!i) continue;
     		var anglePlanet = Mathf.Atan2(i.transform.position.x, i.transform.position.z);

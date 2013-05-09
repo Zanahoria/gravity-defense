@@ -2,7 +2,6 @@ import System.Collections.Generic;
  
 static var G = 0.2f; // adjust with try & error
  
-//static var planets = List.<Rigidbody>();
 static var planets = List.<Gravity>();
 private var myRigidbody : Rigidbody;
 
@@ -17,19 +16,15 @@ function Awake()
     if (myRigidbody.isKinematic) {
 		return;
 	}
-    //myRigidbody.velocity = transform.TransformDirection(initialForwardSpeed);
-    //myRigidbody.angularVelocity = initialRotationSpeed;
 }
  
 function OnEnable()
 {
-    //planets.Add(rigidbody);
     planets.Add(this);
 }
  
 function OnDisable()
 {
-    //planets.Remove(rigidbody);
     planets.Remove(this);
 }
  

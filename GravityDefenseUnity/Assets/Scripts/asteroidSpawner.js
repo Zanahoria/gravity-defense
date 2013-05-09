@@ -85,7 +85,7 @@ function Update ()
 			{
 				nbWave = 0;
 				state = ISWAITING;
-				IngameGUI.gold += 50;
+				MineralResources.nbResources += 50;
 				currentRound = (currentRound + 1) % rounds.Length;
 				if (currentRound == 0)
 				{
@@ -94,8 +94,9 @@ function Update ()
 				}
 				nbDirections = rounds[currentRound] + level;
 				PrepareWaves();
+				
 				// launch the preparation phase
-				Phase.EnableControls();
+				Phase.inPhase = 0;
 			}
 		}
 	}

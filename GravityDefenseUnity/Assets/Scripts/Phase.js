@@ -1,41 +1,56 @@
 #pragma strict
 
 static var inPhase = 0;
+static private var oldInPhase = 0;
 
 function Start () {
 	inPhase = 0;
-	//disable spawn script
+	oldInPhase = 0;
 }
 
 function Update () {
+	if (inPhase != oldInPhase)
+	{
+		oldInPhase = inPhase;
+		if (inPhase == 0)
+		{
+			if (Sun.isDead)
+			{
+				MineralResources.nbResources = 100;
+				Application.LoadLevel("gravitydefense");
+			}
+			else
+				EnableControls();
+		}
+		else
+			DisableControls();
+	}
 }
 
 static function DisableControls() {
-	inPhase = 1;
-	var orbit = pickingorbit.orbitTab;
-	for (var i : pickingorbit in orbit)
+	var orbit = PickingOrbit.orbitTab;
+	for (var i : PickingOrbit in orbit)
 	{
 		if (!i) continue;
-		i.gameObject.GetComponent(pickingorbit).enabled = false;
-		var planets = i.gameObject.GetComponent(pickingorbit).planetTab;
-		for (var j : dragndrop in planets) {
+		i.gameObject.GetComponent(PickingOrbit).enabled = false;
+		var planets = i.gameObject.GetComponent(PickingOrbit).planetTab;
+		for (var j : PlanetDragNDrop in planets) {
 			if (j)
-				j.gameObject.GetComponent(dragndrop).enabled = false;
+				j.gameObject.GetComponent(PlanetDragNDrop).enabled = false;
 		}
 	}
 }
 
 static function EnableControls() {
-	inPhase = 0;
-	var orbit = pickingorbit.orbitTab;
-	for (var i : pickingorbit in orbit)
+	var orbit = PickingOrbit.orbitTab;
+	for (var i : PickingOrbit in orbit)
 	{
 		if (!i) continue;
-		i.gameObject.GetComponent(pickingorbit).enabled = true;
-		var planets = i.gameObject.GetComponent(pickingorbit).planetTab;
-		for (var j : dragndrop in planets) {
+		i.gameObject.GetComponent(PickingOrbit).enabled = true;
+		var planets = i.gameObject.GetComponent(PickingOrbit).planetTab;
+		for (var j : PlanetDragNDrop in planets) {
 			if (j)
-				j.gameObject.GetComponent(dragndrop).enabled = true;
+				j.gameObject.GetComponent(PlanetDragNDrop).enabled = true;
 		}
 	}
 }
@@ -46,8 +61,8 @@ function OnGUI ()
 	{
 		if (GUI.Button(Rect (10,70,90,50), "Next wave !")) 
 		{
-			DisableControls();
-			asteroidSpawner.state = asteroidSpawner.ISROUNDING;
+			inPhase = 1;
+			AsteroidSpawner.state = AsteroidSpawner.ISROUNDING;
     	}
 	}
 }

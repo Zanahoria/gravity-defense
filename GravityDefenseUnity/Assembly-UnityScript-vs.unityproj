@@ -44,16 +44,22 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Asteroid.js" />
+     <Compile Include="Assets\Scripts\AsteroidCollisions.js" />
+     <Compile Include="Assets\Scripts\AsteroidSettings.js" />
+     <Compile Include="Assets\Scripts\AsteroidSpawner.js" />
      <Compile Include="Assets\Scripts\Gravity.js" />
      <Compile Include="Assets\Scripts\IngameGUI.js" />
      <Compile Include="Assets\Scripts\Life.js" />
+     <Compile Include="Assets\Scripts\MineralResources.js" />
      <Compile Include="Assets\Scripts\MouseOrbit.js" />
      <Compile Include="Assets\Scripts\Phase.js" />
+     <Compile Include="Assets\Scripts\PickingOrbit.js" />
+     <Compile Include="Assets\Scripts\PlanetCost.js" />
+     <Compile Include="Assets\Scripts\PlanetDragNDrop.js" />
      <Compile Include="Assets\Scripts\Sun.js" />
-     <Compile Include="Assets\Scripts\asteroidSpawner.js" />
-     <Compile Include="Assets\Scripts\dragndrop.js" />
-     <Compile Include="Assets\Scripts\pickingorbit.js" />
+     <Compile Include="Assets\Scripts\death behaviours\BasicAsteroidDeath.js" />
+     <Compile Include="Assets\Scripts\death behaviours\PlanetDeath.js" />
+     <Compile Include="Assets\Scripts\death behaviours\SunDeath.js" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />
