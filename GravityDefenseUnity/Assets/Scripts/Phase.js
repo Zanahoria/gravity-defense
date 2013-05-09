@@ -59,7 +59,7 @@ function OnGUI ()
 {
 	if (inPhase == 0)
 	{
-		if (GUI.Button(Rect (10,70,90,50), "Next wave !")) 
+		if (GUI.Button(Rect (10,10,90,50), "Next wave !")) 
 		{
 			inPhase = 1;
 			AsteroidSpawner.state = AsteroidSpawner.ISROUNDING;

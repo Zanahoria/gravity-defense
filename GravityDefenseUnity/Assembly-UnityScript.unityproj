@@ -54,12 +54,14 @@
      <Compile Include="Assets\Scripts\MouseOrbit.js" />
      <Compile Include="Assets\Scripts\Phase.js" />
      <Compile Include="Assets\Scripts\PickingOrbit.js" />
+     <Compile Include="Assets\Scripts\PlanetChangeColor.js" />
      <Compile Include="Assets\Scripts\PlanetCost.js" />
      <Compile Include="Assets\Scripts\PlanetDragNDrop.js" />
      <Compile Include="Assets\Scripts\Sun.js" />
      <Compile Include="Assets\Scripts\death behaviours\BasicAsteroidDeath.js" />
      <Compile Include="Assets\Scripts\death behaviours\PlanetDeath.js" />
      <Compile Include="Assets\Scripts\death behaviours\SunDeath.js" />
+     <Compile Include="Assets\Scripts\explosionTimer.js" />
      <None Include="Assets\Standard Assets\Toon Shading\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
      <None Include="Assets\Standard Assets\Skyboxes\_skybox info.txt" />

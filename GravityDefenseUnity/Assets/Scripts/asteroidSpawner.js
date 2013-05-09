@@ -93,7 +93,8 @@ function Update ()
 					++level;
 				}
 				nbDirections = rounds[currentRound] + level;
-				PrepareWaves();
+				if (!Sun.isDead)
+					PrepareWaves();
 				
 				// launch the preparation phase
 				Phase.inPhase = 0;
