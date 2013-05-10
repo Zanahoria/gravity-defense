@@ -1,18 +1,17 @@
 #pragma strict
 
-static var inPhase = 0;
 static private var oldInPhase = 0;
 
 function Start () {
-	inPhase = 0;
-	oldInPhase = 0;
+	AsteroidSpawner.state = AsteroidSpawner.ISWAITING;
+	oldInPhase = AsteroidSpawner.ISWAITING;
 }
 
 function Update () {
-	if (inPhase != oldInPhase)
+	if (AsteroidSpawner.state != oldInPhase)
 	{
-		oldInPhase = inPhase;
-		if (inPhase == 0)
+		oldInPhase = AsteroidSpawner.state;
+		if (AsteroidSpawner.state == AsteroidSpawner.ISWAITING)
 		{
 			if (Sun.isDead)
 			{
@@ -52,17 +51,5 @@ static function EnableControls() {
 			if (j)
 				j.gameObject.GetComponent(PlanetDragNDrop).enabled = true;
 		}
-	}
-}
-
-function OnGUI ()
-{
-	if (inPhase == 0)
-	{
-		if (GUI.Button(Rect (10,10,90,50), "Next wave !")) 
-		{
-			inPhase = 1;
-			AsteroidSpawner.state = AsteroidSpawner.ISROUNDING;
-    	}
 	}
 }

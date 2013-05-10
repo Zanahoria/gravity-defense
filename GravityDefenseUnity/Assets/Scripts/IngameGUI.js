@@ -31,4 +31,12 @@ function OnGUI ()
 		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + Sun.sun.gameObject.GetComponent(Life).currentLife + "HP");
 	else
 		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + 0 + "HP");
+
+	if (AsteroidSpawner.state == AsteroidSpawner.ISWAITING)
+	{
+		if (GUI.Button(Rect (10,10,90,50), "Next wave !")) 
+		{
+			AsteroidSpawner.state = AsteroidSpawner.ISROUNDING;
+    	}
+	}
 }
