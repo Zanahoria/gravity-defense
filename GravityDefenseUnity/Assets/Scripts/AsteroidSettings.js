@@ -22,7 +22,7 @@ function Start () {
 function Update () {
 	if (transform.position.magnitude > 35 && Time.timeSinceLevelLoad > spawnTime + duration)
 	{
-		--AsteroidSpawner.nbEnemies;
+		--LevelDescriptor.nbEnemies;
 		Destroy(gameObject);
 	}
 }

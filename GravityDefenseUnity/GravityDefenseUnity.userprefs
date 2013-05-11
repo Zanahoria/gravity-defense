@@ -1,18 +1,9 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AsteroidCollisions.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\LevelScript.js">
     <Files>
-      <File FileName="Assets\Scripts\AsteroidCollisions.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\death behaviours\BasicAsteroidDeath.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\explosionTimer.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AsteroidSettings.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\IngameGUI.js" Line="39" Column="55" />
-      <File FileName="Assets\Scripts\Phase.js" Line="14" Column="57" />
-      <File FileName="Assets\Scripts\AsteroidSpawner.js" Line="98" Column="1" />
-      <File FileName="Assets\Scripts\death behaviours\SunDeath.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlanetChangeColor.js" Line="13" Column="2" />
-      <File FileName="Assets\Scripts\death behaviours\PlanetDeath.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MineralResources.js" Line="7" Column="10" />
+      <File FileName="Assets\Scripts\LevelScript.js" Line="23" Column="23" />
+      <File FileName="Assets\Scripts\LevelDescriptor.js" Line="26" Column="17" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

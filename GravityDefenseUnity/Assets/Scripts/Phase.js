@@ -3,15 +3,15 @@
 static private var oldInPhase = 0;
 
 function Start () {
-	AsteroidSpawner.state = AsteroidSpawner.ISWAITING;
-	oldInPhase = AsteroidSpawner.ISWAITING;
+	LevelDescriptor.state = LevelDescriptor.ISWAITING;
+	oldInPhase = LevelDescriptor.ISWAITING;
 }
 
 function Update () {
-	if (AsteroidSpawner.state != oldInPhase)
+	if (LevelDescriptor.state != oldInPhase)
 	{
-		oldInPhase = AsteroidSpawner.state;
-		if (AsteroidSpawner.state == AsteroidSpawner.ISWAITING)
+		oldInPhase = LevelDescriptor.state;
+		if (LevelDescriptor.state == LevelDescriptor.ISWAITING)
 		{
 			if (Sun.isDead)
 			{

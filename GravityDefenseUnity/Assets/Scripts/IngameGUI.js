@@ -32,11 +32,11 @@ function OnGUI ()
 	else
 		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + 0 + "HP");
 
-	if (AsteroidSpawner.state == AsteroidSpawner.ISWAITING)
+	if (LevelDescriptor.state == LevelDescriptor.ISWAITING)
 	{
 		if (GUI.Button(Rect (10,10,90,50), "Next wave !")) 
 		{
-			AsteroidSpawner.state = AsteroidSpawner.ISROUNDING;
+			LevelDescriptor.state = LevelDescriptor.ISROUNDING;
     	}
 	}
 }

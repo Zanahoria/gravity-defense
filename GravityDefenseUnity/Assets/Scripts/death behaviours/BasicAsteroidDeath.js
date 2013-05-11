@@ -16,7 +16,7 @@ function Update () {
 
 			var settings : AsteroidSettings = this.gameObject.GetComponent(AsteroidSettings);
 			MineralResources.nbResources += settings.nbResourcesEarned;
-			--AsteroidSpawner.nbEnemies;
+			--LevelDescriptor.nbEnemies;
 			Destroy(this.gameObject);
 		}
 }
