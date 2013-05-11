@@ -15,7 +15,13 @@ Platform assembly: D:\Projets\gravity-defense\GravityDefenseUnity\Gravity Defens
 Loading D:\Projets\gravity-defense\GravityDefenseUnity\Gravity Defense_Data\Managed\Assembly-UnityScript-firstpass.dll into Unity Child Domain
 Platform assembly: D:\Projets\gravity-defense\GravityDefenseUnity\Gravity Defense_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
 Loading D:\Projets\gravity-defense\GravityDefenseUnity\Gravity Defense_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
-- Completed reload, in  0.047 seconds
+- Completed reload, in  0.049 seconds
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
+Platform assembly: D:\Projets\gravity-defense\GravityDefenseUnity\Gravity Defense_Data\Managed\Boo.Lang.dll (this message is harmless)
+HDR RenderTexture format is not supported on this platform. This camera will render without HDR buffers.
+ 
+(Filename: C:/BuildAgent/work/812c4f5049264fad/Runtime/Camera/Camera.cpp Line: 1858)
+
+Platform assembly: D:\Projets\gravity-defense\GravityDefenseUnity\Gravity Defense_Data\Managed\UnityScript.Lang.dll (this message is harmless)

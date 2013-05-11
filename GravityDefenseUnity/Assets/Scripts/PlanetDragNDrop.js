@@ -2,6 +2,7 @@
 
 
 public var orbit : PickingOrbit = null;
+public var hasBeenMoved : boolean = false;
 
 private var isDragging : boolean = false;
 private var lastPoint : Vector3;
@@ -24,6 +25,7 @@ function Update () {
     		lastPoint = pos;
 	       	lastAngle = Mathf.Atan2(pos.x, pos.z);
     		isDragging = true;
+    		hasBeenMoved = false;
         }
     }
     else if (isDragging)
@@ -34,6 +36,8 @@ function Update () {
        	pos = ray.origin + vec;
        	var angle = Mathf.Atan2(pos.x, pos.z);
        	var diffAngle = angle - lastAngle;
+       	if (diffAngle)
+       		hasBeenMoved = true;
        	lastAngle = angle;
 		planets = this.orbit.planetTab;
     	for (var i : PlanetDragNDrop in planets)

@@ -1,6 +1,6 @@
 #pragma strict
 
-static public var SelectedObject : Upgrade;
+static public var SelectedObject : Upgrade = null;
 public static var ORIGINAL : int = 0;
 public static var BOUNCY : int = 1;
 public static var DESTRUCTION : int = 2;
@@ -10,13 +10,10 @@ public static var BOUNCY_COST = 300;
 public static var DESTRUCTION_COST = 300;
 public static var LASER_COST = 300;
 public var isUpgradable : boolean;
+public var isSalable : boolean;
 
 function Start () {
- SelectedObject = null;
  TypePlanet = ORIGINAL;
-}
-
-function Update () {
 }
 
 function UpgradeObject(type : int)
@@ -52,7 +49,9 @@ function UpgradeObject(type : int)
 	}
 }
 
-function OnMouseDown()
+function OnMouseUp()
 {
-	this.SelectedObject = this;
+	var dragNDrop = this.gameObject.GetComponent(PlanetDragNDrop);
+	if (dragNDrop == null || !dragNDrop.hasBeenMoved)
+		this.SelectedObject = this;
 }

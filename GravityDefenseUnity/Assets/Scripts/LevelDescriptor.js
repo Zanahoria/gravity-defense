@@ -3,6 +3,7 @@
 class Direction
 {
 	var angle : float = 0.0;
+	var accuracy : float = 0.05;
 	var asteroidNb : int = 5;
 	var asteroidType : String = "basic";
 	var asteroidLife : int = 2;
@@ -31,12 +32,15 @@ class Round
 	};
 }
 
+public var lineObject : GameObject;
 public var Asteroid : GameObject;
 
-public static var ISWAITING : int = 0;
-public static var ISROUNDING : int = 1;
+public static var ISLOADING : int = 0;
+public static var ISWAITING : int = 1;
+public static var ISROUNDING : int = 2;
+public static var ISFINISHED : int = 3;
 
-static public var state : int = ISWAITING;
+static public var state : int = ISLOADING;
 
 static public var nbEnemies = 0;
 static public var roundId = 0;
@@ -73,7 +77,7 @@ function Start()
 {
 	roundId = 0;
 	nbWave = 0;
-	state = ISWAITING;
+	state = ISLOADING;
 	nbEnemies = 0;
 	clearRounds();
 }
@@ -98,7 +102,9 @@ function Update ()
 {
 	if (roundId >= rounds.Count)
 		return ;
-	if (state == ISROUNDING)
+	if (state == ISWAITING && !lineList.Count)
+		PrepareWaves();
+	else if (state == ISROUNDING)
 	{
 		if (nbEnemies == 0)
 		{
@@ -109,11 +115,14 @@ function Update ()
 			else
 			{
 				nbWave = 0;
-				state = ISWAITING;
 				MineralResources.nbResources += rounds[roundId].moneyEarned;
 				++roundId;
 				if (!Sun.isDead)
 					PrepareWaves();
+				if (roundId < rounds.Count)
+					state = ISWAITING;
+				else
+					state = ISFINISHED;
 			}
 		}
 	}
@@ -125,7 +134,7 @@ function LaunchWave()
 	{
 		for (var j : int = 0; j < direction.asteroidNb; ++j)
 		{
-			var addAngle = Random.value * 0.05 - 0.025;
+			var addAngle : float = Random.value * direction.accuracy - direction.accuracy / 2.0;
 			var asteroid = Instantiate(Asteroid, Vector3((40 + j) * Mathf.Cos(direction.angle + addAngle), 0,
 			(40 + j) * Mathf.Sin(direction.angle + addAngle)), Quaternion.identity);
 			var life = asteroid.GetComponent(Life);
@@ -141,12 +150,11 @@ function LaunchWave()
 
 static function Load()
 {
-	PrepareWaves();
+	state = ISWAITING;
 }
 
-static function PrepareWaves()
+function PrepareWaves()
 {
-	var lineObject = GameObject.Find("line");
 	if (roundId < rounds.Count)
 	{
 		for (var wave in rounds[roundId].waves)

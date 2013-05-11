@@ -3,8 +3,7 @@
 static private var oldInPhase = 0;
 
 function Start () {
-	LevelDescriptor.state = LevelDescriptor.ISWAITING;
-	oldInPhase = LevelDescriptor.ISWAITING;
+	oldInPhase = LevelDescriptor.state;
 }
 
 function Update () {
@@ -13,12 +12,7 @@ function Update () {
 		oldInPhase = LevelDescriptor.state;
 		if (LevelDescriptor.state == LevelDescriptor.ISWAITING)
 		{
-			if (Sun.isDead)
-			{
-				MineralResources.nbResources = 100;
-				Application.LoadLevel("gravitydefense");
-			}
-			else
+			if (!Sun.isDead)
 				EnableControls();
 		}
 		else
