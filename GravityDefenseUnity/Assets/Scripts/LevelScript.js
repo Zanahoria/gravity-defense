@@ -1,9 +1,10 @@
 #pragma strict
 
+// level name and description
 LevelDescriptor.levelName = "Test";
 LevelDescriptor.levelDescription = "a basic test";
 
-//initial resources
+// initial resources
 MineralResources.nbResources = 200;
 
 // first round
@@ -30,5 +31,5 @@ LevelDescriptor.AddRound(round);
 
 
 
-// load of the level
+// level loading
 LevelDescriptor.Load();

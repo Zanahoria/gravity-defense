@@ -71,12 +71,27 @@ static public function CreateRound()
 
 function Start()
 {
-	levelName = "level name";
-	levelDescription = "level description";
 	roundId = 0;
 	nbWave = 0;
 	state = ISWAITING;
 	nbEnemies = 0;
+	clearRounds();
+}
+
+function clearRounds()
+{
+	while (rounds.Count)
+	{
+		while (rounds[0].waves.Count)
+		{
+			while (rounds[0].waves[0].directions.Count)
+			{
+				rounds[0].waves[0].directions.RemoveAt(0);
+			}
+			rounds[0].waves.RemoveAt(0);
+		}
+		rounds.RemoveAt(0);
+	}
 }
 
 function Update ()

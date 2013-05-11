@@ -48,6 +48,7 @@
      <Compile Include="Assets\Scripts\AsteroidSettings.js" />
      <Compile Include="Assets\Scripts\ExplosionTimer.js" />
      <Compile Include="Assets\Scripts\Gravity.js" />
+     <Compile Include="Assets\Scripts\IngameGUI-backup.js" />
      <Compile Include="Assets\Scripts\IngameGUI.js" />
      <Compile Include="Assets\Scripts\LevelDescriptor.js" />
      <Compile Include="Assets\Scripts\LevelScript.js" />
@@ -59,7 +60,9 @@
      <Compile Include="Assets\Scripts\PlanetChangeColor.js" />
      <Compile Include="Assets\Scripts\PlanetCost.js" />
      <Compile Include="Assets\Scripts\PlanetDragNDrop.js" />
+     <Compile Include="Assets\Scripts\Shield.js" />
      <Compile Include="Assets\Scripts\Sun.js" />
+     <Compile Include="Assets\Scripts\Upgrade.js" />
      <Compile Include="Assets\Scripts\death behaviours\BasicAsteroidDeath.js" />
      <Compile Include="Assets\Scripts\death behaviours\PlanetDeath.js" />
      <Compile Include="Assets\Scripts\death behaviours\SunDeath.js" />
