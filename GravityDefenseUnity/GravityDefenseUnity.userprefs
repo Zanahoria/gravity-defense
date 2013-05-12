@@ -1,15 +1,10 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\IngameGUI.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AsteroidCollisions.js">
     <Files>
-      <File FileName="Assets\Scripts\IngameGUI.js" Line="60" Column="97" />
-      <File FileName="Assets\Scripts\LevelScript.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\LevelDescriptor.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Shield.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Phase.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlanetDragNDrop.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Upgrade.js" Line="13" Column="32" />
-      <File FileName="Assets\Scripts\RemoveUpgradeWindow.js" Line="12" Column="4" />
+      <File FileName="Assets\Scripts\IngameGUI.js" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\Upgrade.js" Line="25" Column="29" />
+      <File FileName="Assets\Scripts\AsteroidCollisions.js" Line="9" Column="61" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

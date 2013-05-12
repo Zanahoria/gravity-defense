@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\PlanetChangeColor.js" />
      <Compile Include="Assets\Scripts\PlanetCost.js" />
      <Compile Include="Assets\Scripts\PlanetDragNDrop.js" />
+     <Compile Include="Assets\Scripts\RemovePlanetGhost.js" />
      <Compile Include="Assets\Scripts\RemoveUpgradeWindow.js" />
      <Compile Include="Assets\Scripts\Shield.js" />
      <Compile Include="Assets\Scripts\Sun.js" />
