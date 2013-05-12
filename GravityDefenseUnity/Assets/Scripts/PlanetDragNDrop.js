@@ -42,7 +42,6 @@ function Update () {
 		planets = this.orbit.planetTab;
     	for (var i : PlanetDragNDrop in planets)
     	{
-    		if (!i) continue;
     		var anglePlanet = Mathf.Atan2(i.transform.position.x, i.transform.position.z);
     		var newPos : Vector3;
     		newPos.x = i.transform.position.magnitude * Mathf.Sin(anglePlanet + diffAngle);

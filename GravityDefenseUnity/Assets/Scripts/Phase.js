@@ -24,7 +24,6 @@ static function DisableControls() {
 	var orbit = PickingOrbit.orbitTab;
 	for (var i : PickingOrbit in orbit)
 	{
-		if (!i) continue;
 		i.gameObject.GetComponent(PickingOrbit).enabled = false;
 		var planets = i.gameObject.GetComponent(PickingOrbit).planetTab;
 		for (var j : PlanetDragNDrop in planets) {
@@ -38,7 +37,6 @@ static function EnableControls() {
 	var orbit = PickingOrbit.orbitTab;
 	for (var i : PickingOrbit in orbit)
 	{
-		if (!i) continue;
 		i.gameObject.GetComponent(PickingOrbit).enabled = true;
 		var planets = i.gameObject.GetComponent(PickingOrbit).planetTab;
 		for (var j : PlanetDragNDrop in planets) {
