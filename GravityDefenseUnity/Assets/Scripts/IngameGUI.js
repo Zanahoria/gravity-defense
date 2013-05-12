@@ -103,7 +103,26 @@ function OnGUI ()
 	if (GUI.Button(Rect (10, Screen.height - 60, 90, 50), "Add 100\nRessources")) {
 	MineralResources.nbResources += 100;
 		}
-
+		
+		
+//	// number of enemies by direction display
+//	
+//	if (LevelDescriptor.state == LevelDescriptor.ISWAITING && LevelDescriptor.roundId < LevelDescriptor.rounds.Count)
+//	{
+//		for (var wave in LevelDescriptor.rounds[LevelDescriptor.roundId].waves)
+//		{
+//			for (var direction in wave.directions)
+//			{
+//				var angle : float = direction.angle;
+//				
+//				var position3D = Vector3(30 * Mathf.Cos(angle), 0, 30 * Mathf.Sin(angle));
+//				var position = Camera.mainCamera.WorldToScreenPoint(position3D);
+//				position.y = Screen.height - position.y;
+//				GUI.Label(Rect (position.x, position.y - 50 / 4, 200, 50), "x" + direction.asteroidNb);
+//			}
+//		}
+//	}
+//
 }
 
 function WaitForIt()

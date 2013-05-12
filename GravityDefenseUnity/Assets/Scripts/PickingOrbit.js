@@ -8,6 +8,14 @@ public static var planetGhostInstance : Transform;
 public static var currentOrbitHover : PickingOrbit;
 
 function Start () {
+	for (var orbit in orbitTab)
+	{
+		if (orbit == null)
+		{
+			orbitTab.Clear();
+			break;
+		}
+	}
 	orbitTab.Add(this);
 }
 

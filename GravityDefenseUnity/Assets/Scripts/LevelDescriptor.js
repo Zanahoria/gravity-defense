@@ -33,8 +33,8 @@ class Round
 }
 
 public var lineObject : GameObject;
-public var Asteroid : GameObject;
 
+public static var asteroidTypes = new Dictionary.<String, GameObject>();
 public static var ISLOADING : int = 0;
 public static var ISWAITING : int = 1;
 public static var ISROUNDING : int = 2;
@@ -48,8 +48,10 @@ static public var roundId = 0;
 static public var levelName : String;
 static public var levelDescription : String;
 
-static private var rounds = List.<Round>();
+static public var rounds = List.<Round>();
+
 static private var lineList = List.<GameObject>();
+static private var asteroidInfos = List.<GameObject>();
 private var nbWave = 0;
 
 static public function AddRound(round : Round)
@@ -128,6 +130,17 @@ function Update ()
 	}
 }
 
+function instantiateAsteroid(direction : Direction, position : Vector3)
+{
+	var asteroid = Instantiate(asteroidTypes[direction.asteroidType], position, Quaternion.identity);
+	var life = asteroid.GetComponent(Life);
+	life.maxLife = direction.asteroidLife;
+	life.currentLife = direction.asteroidLife;
+	asteroid.GetComponent(AsteroidSettings).nbResourcesEarned = direction.moneyEarned;
+	asteroid.GetComponent(Gravity).attractCoef = direction.attractCoef;
+	return asteroid;
+}
+
 function LaunchWave()
 {
 	for (var direction in rounds[roundId].waves[nbWave].directions)
@@ -135,13 +148,8 @@ function LaunchWave()
 		for (var j : int = 0; j < direction.asteroidNb; ++j)
 		{
 			var addAngle : float = Random.value * direction.accuracy - direction.accuracy / 2.0;
-			var asteroid = Instantiate(Asteroid, Vector3((40 + j) * Mathf.Cos(direction.angle + addAngle), 0,
-			(40 + j) * Mathf.Sin(direction.angle + addAngle)), Quaternion.identity);
-			var life = asteroid.GetComponent(Life);
-			life.maxLife = direction.asteroidLife;
-			life.currentLife = direction.asteroidLife;
-			asteroid.GetComponent(AsteroidSettings).nbResourcesEarned = direction.moneyEarned;
-			asteroid.GetComponent(Gravity).attractCoef = direction.attractCoef;
+			instantiateAsteroid(direction, Vector3((40 + j) * Mathf.Cos(direction.angle + addAngle), 0,
+			(40 + j) * Mathf.Sin(direction.angle + addAngle)));
 			++nbEnemies;
 		}
 	}
@@ -167,6 +175,14 @@ function PrepareWaves()
 				linerd.SetPosition(0, Vector3(4 * Mathf.Cos(angle), 0, 4 * Mathf.Sin(angle)));
 				linerd.SetPosition(1, Vector3(50 * Mathf.Cos(angle), 0, 50 * Mathf.Sin(angle)));
 				lineList.Add(line);
+				
+				var asteroid = instantiateAsteroid(direction, Vector3(25 * Mathf.Cos(angle), 0, 25 * Mathf.Sin(angle)));
+				asteroid.rigidbody.velocity = Vector3.zero;
+				asteroid.GetComponent(Gravity).enabled = false;
+				asteroid.transform.localScale *= 5;
+				var display = asteroid.AddComponent(DisplayMessage);
+				display.message = "x" + direction.asteroidNb;
+				asteroidInfos.Add(asteroid);
 			}
 		}
 	}
@@ -177,6 +193,10 @@ function RemoveLines()
 	for (var i : GameObject in lineList)
 		Destroy(i);
 	lineList.Clear();
+
+	for (var i : GameObject in asteroidInfos)
+		Destroy(i);
+	asteroidInfos.Clear();
 }
 
 //public var attractCoef : float = 1.0;
