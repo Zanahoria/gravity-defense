@@ -50,11 +50,11 @@ function OnGUI ()
 		{
 			if (Upgrade.SelectedObject.isUpgradable && Upgrade.SelectedObject.TypePlanet == Upgrade.ORIGINAL)
 			{
-				if (GUI.Button(Rect (Screen.width - 140, 115, 130, 50), "Add destruction\nShield  300 RES")) 
+				if (GUI.Button(Rect (Screen.width - 140, 115, 130, 50), "Add destruction\nShield  300 RES"))
 					Upgrade.SelectedObject.UpgradeObject(Upgrade.DESTRUCTION);
 				if (GUI.Button(Rect (Screen.width - 140, 170, 130, 50), "Add bouncy\nShield  300 RES"))
 					Upgrade.SelectedObject.UpgradeObject(Upgrade.BOUNCY);
-				if (GUI.Button(Rect (Screen.width - 140, 225, 130, 50), "Add Lasers\n150 RES")) 
+				if (GUI.Button(Rect (Screen.width - 140, 225, 130, 50), "Add Lasers\n150 RES"))
 					Upgrade.SelectedObject.UpgradeObject(Upgrade.LASER);
 			}
 			if (Upgrade.SelectedObject.isSalable && GUI.Button(Rect (Screen.width - 140, 60, 130, 50), "Sell"))
@@ -67,7 +67,12 @@ function OnGUI ()
 	// life and upgrades bought display
 	if (Upgrade.SelectedObject != null)
 	{
-		GUI.Label(Rect (Screen.width - 80, 5, 130, 50), "Life: " + Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP");
+		var nameDefinition = Upgrade.SelectedObject.gameObject.GetComponent(NameDefinition);
+		var name : String = "";
+		if (nameDefinition)
+			name = nameDefinition.objectName + " - ";
+		
+		GUI.Label(Rect (Screen.width - 80, 5, 130, 50), name + "Life: " + Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP");
 
 		if (Upgrade.SelectedObject.TypePlanet == Upgrade.BOUNCY)
 		{
