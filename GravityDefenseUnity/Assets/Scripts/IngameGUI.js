@@ -3,6 +3,9 @@
 static var speed = 1;
 static var LackRessources : int = 0;
 
+public var objectSelectedInfosStyle : GUIStyle;
+public var globalInfosStyle : GUIStyle;
+
 function Start () {
 LackRessources = 0;
 }
@@ -31,11 +34,11 @@ function OnGUI ()
 	}
 	
 	// global infos display (resources, life)
-	GUI.Label(Rect (110, 10, 100, 50), "Resources: " + MineralResources.nbResources);
+	GUI.Label(Rect (110, 10, 100, 50), "Resources: " + MineralResources.nbResources, globalInfosStyle);
 	if (Sun.sun)
-		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + Sun.sun.gameObject.GetComponent(Life).currentLife + "HP");
+		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + Sun.sun.gameObject.GetComponent(Life).currentLife + "HP", globalInfosStyle);
 	else
-		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + 0 + "HP");
+		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + 0 + "HP", globalInfosStyle);
 
 	if (LevelDescriptor.state == LevelDescriptor.ISWAITING)
 	{
@@ -72,15 +75,15 @@ function OnGUI ()
 		if (nameDefinition)
 			name = nameDefinition.objectName + " - ";
 		
-		GUI.Label(Rect (Screen.width - 80, 5, 130, 50), name + "Life: " + Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP");
+		GUI.Label(Rect (Screen.width - 60, 5, 50, 16), name + "Life : " + Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP", objectSelectedInfosStyle);
 
 		if (Upgrade.SelectedObject.TypePlanet == Upgrade.BOUNCY)
 		{
-			GUI.Label(Rect (Screen.width - 150, 25, 200, 50), "Bouncy Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP");
+			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Bouncy Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
 		}
 		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.DESTRUCTION)
 		{
-			GUI.Label(Rect (Screen.width - 150, 25, 200, 50), "Destruction Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP");
+			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Destruction Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
 		}
 	}
 	
