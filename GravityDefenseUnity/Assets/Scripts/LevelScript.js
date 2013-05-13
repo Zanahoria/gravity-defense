@@ -30,7 +30,8 @@ wave.AddDirection(direction);
 direction = LevelDescriptor.CreateDirection();
 direction.angle = 45.0 * 3.14 / 180.0;
 direction.asteroidNb = 24;
-direction.asteroidType = "splittable";
+direction.asteroidType = "basic";
+direction.accuracy = 0.1;
 wave.AddDirection(direction);
 
 round.AddWave(wave);

@@ -148,8 +148,8 @@ function LaunchWave()
 		for (var j : int = 0; j < direction.asteroidNb; ++j)
 		{
 			var addAngle : float = Random.value * direction.accuracy - direction.accuracy / 2.0;
-			instantiateAsteroid(direction, Vector3((40 + j) * Mathf.Cos(direction.angle + addAngle), 0,
-			(40 + j) * Mathf.Sin(direction.angle + addAngle)));
+			instantiateAsteroid(direction, Vector3((40.0 + j * (this.transform.localScale.x + 0.1)) * Mathf.Cos(direction.angle + addAngle), 0,
+			(40.0 + j * (this.transform.localScale.x + 0.1)) * Mathf.Sin(direction.angle + addAngle)));
 			++nbEnemies;
 		}
 	}

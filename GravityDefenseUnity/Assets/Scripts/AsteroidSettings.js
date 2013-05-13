@@ -10,7 +10,7 @@ function Awake()
 {
 	var pos = this.transform.position;
 	rigidbody.velocity = transform.TransformDirection((-pos * initialVelocity) / pos.magnitude);
-	rigidbody.angularVelocity = Vector3(Random.Range(-10, 10), Random.Range(-10, 10), Random.Range(-10, 10));
+	rigidbody.angularVelocity = Vector3(Random.Range(-4, 4), Random.Range(-4, 4), Random.Range(-4, 4));
 
 	spawnTime = Time.timeSinceLevelLoad;
 }
