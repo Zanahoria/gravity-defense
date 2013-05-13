@@ -25,7 +25,6 @@ function Update () {
     		lastPoint = pos;
 	       	lastAngle = Mathf.Atan2(pos.x, pos.z);
     		isDragging = true;
-    		hasBeenMoved = false;
         }
     }
     else if (isDragging)
@@ -52,6 +51,7 @@ function Update () {
     }
     if (isDragging && Input.GetMouseButtonUp(0))
    	{
-    	isDragging = false;
+     		hasBeenMoved = false;
+		   	isDragging = false;
     }
 }
