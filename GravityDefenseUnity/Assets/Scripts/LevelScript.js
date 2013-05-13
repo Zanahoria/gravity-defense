@@ -11,7 +11,7 @@ MineralResources.nbResources = 200;
 var round = LevelDescriptor.CreateRound();
 var wave = LevelDescriptor.CreateWave();
 var direction = LevelDescriptor.CreateDirection();
-direction.asteroidType = "basic";
+direction.asteroidType = "splitable";
 wave.AddDirection(direction);
 
 round.AddWave(wave);
@@ -23,12 +23,14 @@ round = LevelDescriptor.CreateRound();
 wave = LevelDescriptor.CreateWave();
 direction = LevelDescriptor.CreateDirection();
 direction.angle = 90.0 * 3.14 / 180.0;
+direction.asteroidType = "splitable";
 
 wave.AddDirection(direction);
 
 direction = LevelDescriptor.CreateDirection();
 direction.angle = 45.0 * 3.14 / 180.0;
 direction.asteroidNb = 24;
+direction.asteroidType = "splitable";
 wave.AddDirection(direction);
 
 round.AddWave(wave);
