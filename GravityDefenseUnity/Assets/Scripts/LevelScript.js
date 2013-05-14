@@ -12,6 +12,8 @@ var round = LevelDescriptor.CreateRound();
 var wave = LevelDescriptor.CreateWave();
 var direction = LevelDescriptor.CreateDirection();
 direction.asteroidType = "splittable";
+direction.asteroidLife = 2;
+direction.asteroidScale = 2;
 wave.AddDirection(direction);
 
 round.AddWave(wave);
@@ -24,6 +26,9 @@ wave = LevelDescriptor.CreateWave();
 direction = LevelDescriptor.CreateDirection();
 direction.angle = 90.0 * 3.14 / 180.0;
 direction.asteroidType = "splittable";
+direction.asteroidLife = 8;
+direction.asteroidScale = 8;
+direction.asteroidNb = 2;
 
 wave.AddDirection(direction);
 

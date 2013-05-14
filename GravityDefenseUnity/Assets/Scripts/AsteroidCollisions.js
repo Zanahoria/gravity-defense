@@ -6,7 +6,7 @@ function Start () {
 
 function getDamage(life : Life, shield : Shield, type : Upgrade)
 {
-	if (type.TypePlanet == type.BOUNCY && shield.currentShield)
+	if (type.TypePlanet == Upgrade.BOUNCY && shield.currentShield)
 		return 1;
 	else
 		return life.currentLife + shield.currentShield;
@@ -22,6 +22,16 @@ function OnCollisionEnter(collision : Collision)
 	var type2 : Upgrade = collision.gameObject.GetComponent(Upgrade);
 	var DMGto1 : int = 0;
 	var DMGto2 : int = 0;
+
+	if (type1.TypePlanet != Upgrade.BOUNCY && type2.TypePlanet != Upgrade.BOUNCY)
+	{
+		var regist1 = this.GetComponent(RegisterLastVelocity);
+		var regist2 = collision.gameObject.GetComponent(RegisterLastVelocity);
+		if (regist1)
+			regist1.SetToLastVelocity();
+		if (regist2)
+			regist2.SetToLastVelocity();
+	}
 
 	DMGto2 = getDamage(life1, shield1, type1);
 	DMGto1 = getDamage(life2, shield2, type2);

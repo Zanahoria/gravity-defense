@@ -12,6 +12,7 @@ class Direction
 	var moneyEarned : int = 5;
 	var attractCoef : float = 1.0;
 	var delay : float = 0.0;
+	var asteroidScale : float = 1.0;
 }
 
 class Wave
@@ -148,6 +149,7 @@ function instantiateAsteroid(direction : Direction, position : Vector3)
 	life.currentLife = direction.asteroidLife;
 	asteroid.GetComponent(AsteroidSettings).nbResourcesEarned = direction.moneyEarned;
 	asteroid.GetComponent(Gravity).attractCoef = direction.attractCoef;
+	asteroid.transform.localScale *= direction.asteroidScale;
 	asteroidTab.Add(asteroid);
 	return asteroid;
 }
@@ -159,8 +161,10 @@ function LaunchWave()
 		for (var j : int = 0; j < direction.asteroidNb; ++j)
 		{
 			var addAngle : float = Random.value * direction.accuracy - direction.accuracy / 2.0;
-			instantiateAsteroid(direction, Vector3((40.0 + j * (this.transform.localScale.x + 0.1)) * Mathf.Cos(direction.angle + addAngle), 0,
-			(40.0 + j * (this.transform.localScale.x + 0.1)) * Mathf.Sin(direction.angle + addAngle)));
+			var asteroid = instantiateAsteroid(direction, Vector3((40.0 + j) * Mathf.Cos(direction.angle + addAngle), 0,
+			(40.0 + j) * Mathf.Sin(direction.angle + addAngle)));
+			asteroid.transform.position = Vector3((40.0 + j * (asteroid.transform.localScale.x * 2 + 1.0)) * Mathf.Cos(direction.angle + addAngle), 0,
+			(40.0 + j * (asteroid.transform.localScale.x * 2 + 1.0)) * Mathf.Sin(direction.angle + addAngle));
 			++nbEnemies;
 		}
 	}
@@ -190,7 +194,6 @@ function PrepareWaves()
 				var asteroid = instantiateAsteroid(direction, Vector3(25 * Mathf.Cos(angle), 0, 25 * Mathf.Sin(angle)));
 				asteroid.rigidbody.velocity = Vector3.zero;
 				asteroid.GetComponent(Gravity).enabled = false;
-				asteroid.transform.localScale *= 5;
 				var display = asteroid.AddComponent(DisplayMessage);
 				display.message = "x" + direction.asteroidNb;
 				asteroidInfos.Add(asteroid);
