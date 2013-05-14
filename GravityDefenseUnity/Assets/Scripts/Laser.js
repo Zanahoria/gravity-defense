@@ -19,8 +19,6 @@ function Update () {
 		{
 				if ((Vector3.Distance(LaserPos, lastHit.gameObject.transform.position)) < LASER_RANGE)
 				{
-					Debug.Log("piou again");
-					Debug.Log(Time.timeSinceLevelLoad);
 					lastHit.GetComponent(Life).currentLife -= 1;
     			}
 		}
@@ -32,8 +30,6 @@ function Update () {
     			var dist = Vector3.Distance(LaserPos, i.gameObject.transform.position);
 				if (dist < LASER_RANGE)
 				{
-					Debug.Log("piou piou");
-					Debug.Log(Time.timeSinceLevelLoad);
 					lastHit = i;
 					lastHit.GetComponent(Life).currentLife -= DAMAGE;
 					break;
