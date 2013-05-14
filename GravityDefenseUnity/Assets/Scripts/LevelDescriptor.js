@@ -1,5 +1,7 @@
 #pragma strict
 
+public static var asteroidTab = List.<GameObject>();
+
 class Direction
 {
 	var angle : float = 0.0;
@@ -82,6 +84,14 @@ function Start()
 	state = ISLOADING;
 	nbEnemies = 0;
 	clearRounds();
+	for (var asteroid in asteroidTab)
+	{
+		if (asteroid == null)
+		{
+			asteroidTab.Clear();
+			break;
+		}
+	}
 }
 
 function clearRounds()
@@ -138,6 +148,7 @@ function instantiateAsteroid(direction : Direction, position : Vector3)
 	life.currentLife = direction.asteroidLife;
 	asteroid.GetComponent(AsteroidSettings).nbResourcesEarned = direction.moneyEarned;
 	asteroid.GetComponent(Gravity).attractCoef = direction.attractCoef;
+	asteroidTab.Add(asteroid);
 	return asteroid;
 }
 

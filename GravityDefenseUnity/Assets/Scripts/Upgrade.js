@@ -8,7 +8,7 @@ public static var LASER : int = 3;
 public var TypePlanet : int = ORIGINAL;
 public static var BOUNCY_COST = 300;
 public static var DESTRUCTION_COST = 300;
-public static var LASER_COST = 300;
+public static var LASER_COST = 150;
 public var isUpgradable : boolean;
 public var isSalable : boolean;
 
@@ -24,6 +24,7 @@ function UpgradeObject(type : int)
 		{
 			TypePlanet = DESTRUCTION;
 			Upgrade.SelectedObject.gameObject.GetComponent(Shield).maxShield = 8;
+			MineralResources.nbResources -= DESTRUCTION_COST;
 		}
 		else
 			IngameGUI.LackRessources = 1;
@@ -34,6 +35,7 @@ function UpgradeObject(type : int)
 		{
 			TypePlanet = BOUNCY;
 			Upgrade.SelectedObject.gameObject.GetComponent(Shield).maxShield = 4;
+			MineralResources.nbResources -= BOUNCY_COST;
 		}
 		else
 			IngameGUI.LackRessources = 1;
@@ -43,6 +45,8 @@ function UpgradeObject(type : int)
 		if (MineralResources.nbResources >= LASER_COST)
 		{
 			TypePlanet = LASER;
+			Upgrade.SelectedObject.gameObject.GetComponent(Laser).activated = 1;
+			MineralResources.nbResources -= LASER_COST;
 		}
 		else
 			IngameGUI.LackRessources = 1;

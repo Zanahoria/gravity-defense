@@ -85,6 +85,10 @@ function OnGUI ()
 		{
 			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Destruction Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
 		}
+		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.LASER)
+		{
+			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Laser Activated", objectSelectedInfosStyle);
+		}
 	}
 	
 	// need more resources display

@@ -35,7 +35,15 @@ function Update () {
 			newAsteroid2.GetComponent(Gravity).attractCoef = this.GetComponent(Gravity).attractCoef;
 			++LevelDescriptor.nbEnemies;
 		}
-			
+			var asteroidTab = LevelDescriptor.asteroidTab;
+			for (var i = 0; i < asteroidTab.Count; ++i)
+			{
+				if (asteroidTab[i].transform.GetInstanceID() == this.transform.GetInstanceID())
+				{
+					asteroidTab.RemoveAt(i);
+					break;
+				}
+			}	
 		Destroy(this.gameObject);
 			
 		
