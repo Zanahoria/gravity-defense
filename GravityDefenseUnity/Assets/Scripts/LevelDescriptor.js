@@ -207,6 +207,7 @@ function RemoveLines()
 
 	for (var i : GameObject in asteroidInfos)
 		Destroy(i);
+	asteroidTab.Clear();
 	asteroidInfos.Clear();
 }
 
