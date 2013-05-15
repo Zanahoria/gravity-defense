@@ -6,6 +6,8 @@ static var LackRessources : int = 0;
 public var objectSelectedInfosStyle : GUIStyle;
 public var globalInfosStyle : GUIStyle;
 
+var upgradeRect : Rect = Rect (20, 20, 120, 50);
+
 function Start () {
 LackRessources = 0;
 }
@@ -116,25 +118,14 @@ function OnGUI ()
 	MineralResources.nbResources += 100;
 		}
 		
-		
-//	// number of enemies by direction display
-//	
-//	if (LevelDescriptor.state == LevelDescriptor.ISWAITING && LevelDescriptor.roundId < LevelDescriptor.rounds.Count)
-//	{
-//		for (var wave in LevelDescriptor.rounds[LevelDescriptor.roundId].waves)
-//		{
-//			for (var direction in wave.directions)
-//			{
-//				var angle : float = direction.angle;
-//				
-//				var position3D = Vector3(30 * Mathf.Cos(angle), 0, 30 * Mathf.Sin(angle));
-//				var position = Camera.mainCamera.WorldToScreenPoint(position3D);
-//				position.y = Screen.height - position.y;
-//				GUI.Label(Rect (position.x, position.y - 50 / 4, 200, 50), "x" + direction.asteroidNb);
-//			}
-//		}
-//	}
-//
+	// create upgrade window 
+	upgradeRect = GUI.Window (0, upgradeRect, DoMyUpgradeWindow, "My Window");
+
+}
+
+function DoMyUpgradeWindow (windowID : int) {
+    if (GUI.Button (Rect (10,20,100,20), "Hello World"))
+        print ("Got a click");
 }
 
 function WaitForIt()

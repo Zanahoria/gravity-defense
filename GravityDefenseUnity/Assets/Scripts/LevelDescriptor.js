@@ -148,7 +148,7 @@ function instantiateAsteroid(direction : Direction, position : Vector3)
 	life.maxLife = direction.asteroidLife;
 	life.currentLife = direction.asteroidLife;
 	asteroid.GetComponent(AsteroidSettings).nbResourcesEarned = direction.moneyEarned;
-	asteroid.GetComponent(Gravity).attractCoef = direction.attractCoef;
+	asteroid.GetComponent(Gravity).attractCoef *= direction.attractCoef;
 	asteroid.transform.localScale *= direction.asteroidScale;
 	asteroidTab.Add(asteroid);
 	return asteroid;
