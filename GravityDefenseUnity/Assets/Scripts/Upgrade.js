@@ -45,7 +45,7 @@ function UpgradeObject(type : int)
 		if (MineralResources.nbResources >= LASER_COST)
 		{
 			TypePlanet = LASER;
-			Upgrade.SelectedObject.gameObject.GetComponent(Laser).activated = 1;
+			Upgrade.SelectedObject.gameObject.GetComponent(Laser).activated = true;
 			MineralResources.nbResources -= LASER_COST;
 		}
 		else

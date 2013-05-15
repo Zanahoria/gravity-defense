@@ -5,7 +5,7 @@ public var laserExplosion : GameObject;
 public var activated : boolean = false;
 public var LASER_RANGE : int = 5;
 public var RATE_OF_FIRE : float = 0.6; //time between shot in seconds
-public var DAMAGE : int = 2z;
+public var DAMAGE : int = 2;
 private var lastHit : GameObject = null;
 private var TimeSinceLast : float = RATE_OF_FIRE;
 
@@ -20,6 +20,9 @@ function fire(object1 : GameObject, object2 : GameObject)
 		var line : GameObject = Instantiate(laserLine, Vector3(0, 0, 0), Quaternion.identity);
 		line.GetComponent(LaserFollowTargets).target1 = object1;
 		line.GetComponent(LaserFollowTargets).target2 = object2;
+		var linerd : LineRenderer = line.GetComponent(LineRenderer);
+		linerd.SetPosition(0, object1.transform.position);
+		linerd.SetPosition(1, object2.transform.position);
 	}
 	if (laserExplosion)
 	    Instantiate(laserExplosion, object2.transform.position, Quaternion.identity);
@@ -38,16 +41,15 @@ function Update () {
 				if (dist < LASER_RANGE)
 				{
 					lastHit = i;
-					Debug.Log("nouveau last hit");
 					break;
     			}
     		}
     	}
     	if (lastHit)
     	{
-			lastHit.GetComponent(Life).currentLife -= DAMAGE;
 			fire(this.gameObject, lastHit.gameObject);
 			TimeSinceLast = Time.timeSinceLevelLoad;
+			lastHit.GetComponent(Life).currentLife -= DAMAGE;
 		}
 	}
 }
