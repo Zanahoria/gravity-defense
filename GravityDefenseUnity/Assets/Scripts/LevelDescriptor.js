@@ -6,7 +6,7 @@ class Direction
 	var accuracy : float = 0.05;
 	var asteroidNb : int = 5;
 	var asteroidType : String = "basic";
-	var asteroidLife : int = 2;
+	var asteroidLife : int = 4;
 	var moneyEarned : int = 5;
 	var attractCoef : float = 1.0;
 	var delay : float = 0.0;
