@@ -96,6 +96,7 @@ function Start()
 		}
 	}
 	this.gameObject.AddComponent(scriptName);
+	//this.gameObject.GetComponent(AsteroidSettings).DIST_DESPAWN = 40;
 }
 
 function clearRounds()

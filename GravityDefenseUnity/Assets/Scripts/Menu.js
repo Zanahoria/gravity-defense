@@ -12,14 +12,17 @@ function Update () {
 	if (Time.timeSinceLevelLoad - timeSince > 0.5)
 	{
  	var angle : float = Random.value * (2 * 3.14);
-	var asteroid = Instantiate(Asteroid, Vector3(40.0 * Mathf.Cos(angle), 0,
-   	40.0* Mathf.Sin(angle)),  Quaternion.identity);
+ 	var Dist : float = Random.Range(40, 70);
+	var asteroid = Instantiate(Asteroid, Vector3(Dist * Mathf.Cos(angle), 0,
+   	Dist * Mathf.Sin(angle)),  Quaternion.identity);
    	asteroid.GetComponent(Gravity).gravityMultiplier = 1;
 
 	var size = Random.Range(4, 16);
    	asteroid.GetComponent(Life).maxLife = size;
 	asteroid.GetComponent(Life).currentLife = size;
 	asteroid.transform.localScale *= size;
+	//asteroid.GetComponent(AsteroidSettings).initialVelocity = Random.Range(3, 10);
+	//asteroid.GetComponent(AsteroidSettings).DIST_DESPAWN = 80;
 	Destroy(asteroid.GetComponent(RegisterLastVelocity));
 	timeSince = Time.timeSinceLevelLoad;
 	}

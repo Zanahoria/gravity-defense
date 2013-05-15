@@ -19,7 +19,7 @@ function Start () {
 function Update () {
     if (Input.GetKeyDown(UnityEngine.KeyCode.Escape))
     {
-    	Application.Quit();
+    	Application.LoadLevel("Menu");
     }
 }
 
