@@ -2,14 +2,16 @@
 
 static var speed = 1;
 static var LackRessources : int = 0;
+static var buttonPushed : boolean = false;
 
 public var objectSelectedInfosStyle : GUIStyle;
 public var globalInfosStyle : GUIStyle;
+public var windowStyle : GUIStyle;
 
-var upgradeRect : Rect = Rect (20, 20, 120, 50);
+static var upgradeRect : Rect = Rect (Screen.width - 200, 10, 210, 244);
 
 function Start () {
-LackRessources = 0;
+	LackRessources = 0;
 }
 
 function Update () {
@@ -26,12 +28,14 @@ function OnGUI ()
 		if (GUI.Button(Rect (10, 70, 90, 50), "Speed x4")) {
 			speed = 4;
 			Time.timeScale = 4;
+			ignoreEvent();
 		}
 	}
 	else {
 		if (GUI.Button(Rect (10, 70, 90, 50), "Speed x1")) {
 			speed = 1;
 			Time.timeScale = 1;
+			ignoreEvent();
 		}
 	}
 	
@@ -48,26 +52,9 @@ function OnGUI ()
 		if (!Sun.isDead && GUI.Button(Rect (10,10,90,50), "Next wave !"))
 		{
 			LevelDescriptor.state = LevelDescriptor.ISROUNDING;
+			ignoreEvent();
     	}
-    	
-    	// upgrades and destroy buttons
-		if (Upgrade.SelectedObject != null)
-		{
-			if (Upgrade.SelectedObject.isUpgradable && Upgrade.SelectedObject.TypePlanet == Upgrade.ORIGINAL)
-			{
-				if (GUI.Button(Rect (Screen.width - 140, 115, 130, 50), "Add destruction\nShield  300 RES"))
-					Upgrade.SelectedObject.UpgradeObject(Upgrade.DESTRUCTION);
-				if (GUI.Button(Rect (Screen.width - 140, 170, 130, 50), "Add bouncy\nShield  300 RES"))
-					Upgrade.SelectedObject.UpgradeObject(Upgrade.BOUNCY);
-				if (GUI.Button(Rect (Screen.width - 140, 225, 130, 50), "Add Lasers\n150 RES"))
-					Upgrade.SelectedObject.UpgradeObject(Upgrade.LASER);
-			}
-			if (Upgrade.SelectedObject.isSalable && GUI.Button(Rect (Screen.width - 140, 60, 130, 50), "Sell"))
-			{
-				Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife = 0;
-			}
-		}
-	}
+   	}
 	
 	// life and upgrades bought display
 	if (Upgrade.SelectedObject != null)
@@ -77,20 +64,20 @@ function OnGUI ()
 		if (nameDefinition)
 			name = nameDefinition.objectName + " - ";
 		
-		GUI.Label(Rect (Screen.width - 60, 5, 50, 16), name + "Life : " + Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP", objectSelectedInfosStyle);
-
-		if (Upgrade.SelectedObject.TypePlanet == Upgrade.BOUNCY)
-		{
-			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Bouncy Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
-		}
-		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.DESTRUCTION)
-		{
-			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Destruction Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
-		}
-		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.LASER)
-		{
-			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Laser Activated", objectSelectedInfosStyle);
-		}
+//		GUI.Label(Rect (Screen.width - 60, 5, 50, 16), name + "Life : " + Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP", objectSelectedInfosStyle);
+//
+//		if (Upgrade.SelectedObject.TypePlanet == Upgrade.BOUNCY)
+//		{
+//			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Bouncy Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
+//		}
+//		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.DESTRUCTION)
+//		{
+//			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Destruction Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
+//		}
+//		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.LASER)
+//		{
+//			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Laser Activated", objectSelectedInfosStyle);
+//		}
 	}
 	
 	// need more resources display
@@ -114,29 +101,69 @@ function OnGUI ()
 	}
 
 	// debug button to give resources
-	if (GUI.Button(Rect (10, Screen.height - 60, 90, 50), "Add 100\nRessources")) {
-	MineralResources.nbResources += 100;
-		}
+	if (GUI.Button(Rect (10, Screen.height - 60, 90, 50), "Add 100\nRessources"))
+	{
+		MineralResources.nbResources += 100;
+		ignoreEvent();
+	}
 		
 	// create upgrade window 
 	if (Upgrade.SelectedObject != null)
-		upgradeRect = GUI.Window (0, upgradeRect, DoMyUpgradeWindow, Upgrade.SelectedObject.gameObject.GetComponent(NameDefinition).objectName);
-
+		GUI.Window(0, upgradeRect, DoMyUpgradeWindow, "");
 }
 
 function ignoreEvent()
 {
+	buttonPushed = true;
 	if (Event.current.type != EventType.Layout && Event.current.type != EventType.Repaint)
 	    Event.current.Use ();
 }
 
-function DoMyUpgradeWindow (windowID : int) {
-    if (GUI.Button (Rect (10,20,100,20), "Hello World"))
-    {
-        print ("Got a click");
-        ignoreEvent();
-    }
-//    ignoreEvent();
+function DoMyUpgradeWindow (windowID : int)
+{
+	GUI.Label(Rect (10, 0, 190, 16), Upgrade.SelectedObject.gameObject.GetComponent(NameDefinition).objectName, globalInfosStyle);
+	GUI.Label(Rect (0, 0, 190, 16), Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP", objectSelectedInfosStyle);
+
+	if (Upgrade.SelectedObject.TypePlanet == Upgrade.BOUNCY)
+	{
+		GUI.Label(Rect (10, 22, 190, 16), "Bouncy Shield", globalInfosStyle);
+		GUI.Label(Rect (0, 22, 190, 16), Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
+	}
+	else if (Upgrade.SelectedObject.TypePlanet == Upgrade.DESTRUCTION)
+	{
+		GUI.Label(Rect (10, 22, 190, 16), "Destruction Shield", globalInfosStyle);
+		GUI.Label(Rect (0, 22, 190, 16), Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
+	}
+	else if (Upgrade.SelectedObject.TypePlanet == Upgrade.LASER)
+	{
+		GUI.Label(Rect (10, 22, 190, 16), "Laser Activated", globalInfosStyle);
+	}
+	if (LevelDescriptor.state == LevelDescriptor.ISWAITING)
+	{
+		if (Upgrade.SelectedObject.isUpgradable && Upgrade.SelectedObject.TypePlanet == Upgrade.ORIGINAL)
+		{
+			if (GUI.Button(Rect (1, 46 + 50, 198, 50), "Add destruction\nShield  300 RES"))
+			{
+				Upgrade.SelectedObject.UpgradeObject(Upgrade.DESTRUCTION);
+				ignoreEvent();
+			}
+			if (GUI.Button(Rect (1, 46 + 100, 198, 50), "Add bouncy\nShield  300 RES"))
+			{
+				Upgrade.SelectedObject.UpgradeObject(Upgrade.BOUNCY);
+				ignoreEvent();
+			}
+			if (GUI.Button(Rect (1, 46 + 150, 198, 50), "Add Lasers\n150 RES"))
+			{
+				Upgrade.SelectedObject.UpgradeObject(Upgrade.LASER);
+				ignoreEvent();
+			}
+		}
+		if (Upgrade.SelectedObject.isSalable && GUI.Button(Rect (1, 46, 198, 50), "Sell"))
+		{
+			Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife = 0;
+			ignoreEvent();
+		}
+	}
 }
 
 function WaitForIt()

@@ -2,6 +2,11 @@
 
 function Update ()
 {
+	if (IngameGUI.buttonPushed)
+	{
+		IngameGUI.buttonPushed = false;
+		return;
+	}
 	if (Upgrade.SelectedObject && Input.GetMouseButtonUp(0))
 	{
 		var hit: RaycastHit;
