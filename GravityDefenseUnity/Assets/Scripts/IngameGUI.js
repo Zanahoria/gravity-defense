@@ -5,6 +5,7 @@ static var LackRessources : int = 0;
 static var buttonPushed : boolean = false;
 
 public var objectSelectedInfosStyle : GUIStyle;
+public var lackresourcesStyle : GUIStyle;
 public var centerTextStyle : GUIStyle;
 public var globalInfosStyle : GUIStyle;
 public var windowStyle : GUIStyle;
@@ -48,7 +49,8 @@ function OnGUI ()
 		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + 0 + "HP", globalInfosStyle);
 
 	GUI.Label(Rect (110, 50, 100, 50), "Round " + (LevelDescriptor.roundId + 1) + "/" + LevelDescriptor.rounds.Count, globalInfosStyle);
-	GUI.Label(Rect (Screen.width / 2.0 - 50, 10, 100, 50), LevelDescriptor.rounds[LevelDescriptor.roundId].name, centerTextStyle);
+	if (LevelDescriptor.roundId < LevelDescriptor.rounds.Count)
+		GUI.Label(Rect (Screen.width / 2.0 - 50, 10, 100, 50), LevelDescriptor.rounds[LevelDescriptor.roundId].name, centerTextStyle);
 	
 	if (LevelDescriptor.state == LevelDescriptor.ISWAITING)
 	{
@@ -70,10 +72,12 @@ function OnGUI ()
 	}
 	
 	// need more resources display
-	if (LackRessources == 1)
+	if (LackRessources >= 1)
 	{
-		GUI.Label(Rect (250, 10, 200, 50), "You need more ressources");
-		WaitForIt();
+		GUI.Label(Rect (250, 10, 200, 50), "You need more ressources", lackresourcesStyle);
+		if (LackRessources == 1)
+			WaitForIt();
+		LackRessources = 2;
 	}
 	
 	// retry game button

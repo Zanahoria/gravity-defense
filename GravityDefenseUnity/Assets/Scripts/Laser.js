@@ -49,7 +49,7 @@ function Update () {
     	{
 			fire(this.gameObject, lastHit.gameObject);
 			TimeSinceLast = Time.timeSinceLevelLoad;
-			lastHit.GetComponent(Life).currentLife -= DAMAGE;
+			lastHit.GetComponent(Life).AddRemoveLife(-DAMAGE);
 		}
 	}
 }

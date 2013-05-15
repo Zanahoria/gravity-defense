@@ -210,6 +210,7 @@ function PrepareWaves()
 				var asteroid = instantiateAsteroid(direction, Vector3(25 * Mathf.Cos(angle), 0, 25 * Mathf.Sin(angle)));
 				asteroid.rigidbody.velocity = Vector3.zero;
 				asteroid.GetComponent(Gravity).enabled = false;
+				asteroid.rigidbody.detectCollisions = false;
 				var display = asteroid.AddComponent(DisplayMessage);
 				display.message = "x" + direction.asteroidNb;
 				asteroidInfos.Add(asteroid);
