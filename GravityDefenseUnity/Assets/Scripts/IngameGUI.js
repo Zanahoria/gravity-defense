@@ -84,13 +84,17 @@ function OnGUI ()
 	
 	if (Sun.isDead)
 	{
-		if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 40 / 2, 90, 40), "You loose...\nRetry ?"))
+		if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 42, 90, 40), "You loose...\nRetry ?"))
 			Application.LoadLevel("gravitydefense");
+		else if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 + 2 / 2, 90, 40), "Back to menu"))
+			Application.LoadLevel("Menu");
 	}
 	else if (LevelDescriptor.state == LevelDescriptor.ISFINISHED)
 	{
-		if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 40 / 2, 90, 40), "You win!\nRetry ?"))
+		if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 42, 90, 40), "You win!\nRetry ?"))
 			Application.LoadLevel("gravitydefense");
+		else if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 + 2 / 2, 90, 40), "Back to menu"))
+			Application.LoadLevel("Menu");
 	}
 
 	// debug button to give resources
