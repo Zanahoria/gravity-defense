@@ -58,6 +58,8 @@ function Update ()
 				planetTab.Add(newPlanet);
 				newPlanet.orbit = this;
 			}
+			else
+				IngameGUI.LackRessources = 1;
         }
     }
 }
