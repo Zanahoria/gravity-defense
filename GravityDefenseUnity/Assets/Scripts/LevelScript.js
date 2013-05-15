@@ -8,9 +8,13 @@ LevelDescriptor.levelDescription = "a basic test";
 MineralResources.nbResources = 200;
 
 // first round
-var round = LevelDescriptor.CreateRound();
-var wave = LevelDescriptor.CreateWave();
-var direction = LevelDescriptor.CreateDirection();
+var round : Round;
+var wave : Wave;
+var direction : Direction;
+
+round = LevelDescriptor.CreateRound();
+wave = LevelDescriptor.CreateWave();
+direction = LevelDescriptor.CreateDirection();
 direction.asteroidType = "ship";
 direction.asteroidNb = 16;
 wave.AddDirection(direction);
