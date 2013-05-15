@@ -2,6 +2,7 @@
 
 public var initialVelocity : float = 0;
 public var nbResourcesEarned : int = 5;
+public var DIST_DESPAWN = 35;
 
 private var duration : float = 5;
 private var spawnTime : float = 0;

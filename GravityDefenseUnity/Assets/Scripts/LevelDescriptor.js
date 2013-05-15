@@ -1,6 +1,7 @@
 #pragma strict
 
 public static var asteroidTab = List.<GameObject>();
+public static var scriptName = "";
 
 class Direction
 {
@@ -94,6 +95,7 @@ function Start()
 			break;
 		}
 	}
+	this.gameObject.AddComponent(scriptName);
 }
 
 function clearRounds()
