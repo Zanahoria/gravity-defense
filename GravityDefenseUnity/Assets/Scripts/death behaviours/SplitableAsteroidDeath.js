@@ -43,19 +43,8 @@ function Update () {
 			++LevelDescriptor.nbEnemies;
 			LevelDescriptor.asteroidTab.Add(newAsteroid2.gameObject);
 		}
-			var asteroidTab = LevelDescriptor.asteroidTab;
-			for (var i = 0; i < asteroidTab.Count; ++i)
-			{
-				if (asteroidTab[i].transform.GetInstanceID() == this.transform.GetInstanceID())
-				{
-					asteroidTab.RemoveAt(i);
-					break;
-				}
-			}
-		Destroy(this.gameObject);
-			
-		
-		}
+		LevelDescriptor.RemoveAsteroid(this.gameObject);
+	}
 }
 
 function calcDecalVec()

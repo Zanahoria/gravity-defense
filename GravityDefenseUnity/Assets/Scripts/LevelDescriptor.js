@@ -111,6 +111,19 @@ function clearRounds()
 	}
 }
 
+static function RemoveAsteroid(asteroid : GameObject)
+{
+	for (var i = 0; i < asteroidTab.Count; ++i)
+	{
+		if (asteroidTab[i].transform.GetInstanceID() == asteroid.transform.GetInstanceID())
+		{
+			asteroidTab.RemoveAt(i);
+			break;
+		}
+	}
+	Destroy(asteroid);
+}
+
 function Update ()
 {
 	if (roundId >= rounds.Count)

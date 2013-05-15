@@ -23,15 +23,6 @@ function Update () {
 	if (transform.position.magnitude > 35 && Time.timeSinceLevelLoad > spawnTime + duration)
 	{
 		--LevelDescriptor.nbEnemies;
-		var asteroidTab = LevelDescriptor.asteroidTab;
-		for (var i = 0; i < asteroidTab.Count; ++i)
-			{
-				if (asteroidTab[i].transform.GetInstanceID() == this.transform.GetInstanceID())
-				{
-					asteroidTab.RemoveAt(i);
-					break;
-				}
-			}
-		Destroy(gameObject);
+		LevelDescriptor.RemoveAsteroid(this.gameObject);
 	}
 }

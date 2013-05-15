@@ -12,6 +12,7 @@ var round = LevelDescriptor.CreateRound();
 var wave = LevelDescriptor.CreateWave();
 var direction = LevelDescriptor.CreateDirection();
 direction.asteroidType = "ship";
+direction.asteroidNb = 16;
 wave.AddDirection(direction);
 
 round.AddWave(wave);
