@@ -120,21 +120,23 @@ function OnGUI ()
 		
 	// create upgrade window 
 	if (Upgrade.SelectedObject != null)
-		upgradeRect = GUI.Window (0, upgradeRect, DoMyUpgradeWindow, "Upgrade.SelectedObject");
+		upgradeRect = GUI.Window (0, upgradeRect, DoMyUpgradeWindow, Upgrade.SelectedObject.gameObject.GetComponent(NameDefinition).objectName);
 
 }
 
-
+function ignoreEvent()
+{
+	if (Event.current.type != EventType.Layout && Event.current.type != EventType.Repaint)
+	    Event.current.Use ();
+}
 
 function DoMyUpgradeWindow (windowID : int) {
     if (GUI.Button (Rect (10,20,100,20), "Hello World"))
     {
-		if (Event.current.type != EventType.Layout && Event.current.type != EventType.Repaint)
-		    Event.current.Use ();
         print ("Got a click");
+        ignoreEvent();
     }
-	if (Event.current.type != EventType.Layout && Event.current.type != EventType.Repaint)
-	    Event.current.Use ();
+//    ignoreEvent();
 }
 
 function WaitForIt()
