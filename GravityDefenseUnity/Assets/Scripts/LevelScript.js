@@ -28,13 +28,14 @@ direction.angle = 90.0 * 3.14 / 180.0;
 direction.asteroidType = "splittable";
 direction.asteroidLife = 8;
 direction.asteroidScale = 8;
-direction.asteroidNb = 2;
+direction.asteroidNb = 1;
 
 wave.AddDirection(direction);
 
 direction = LevelDescriptor.CreateDirection();
 direction.angle = 45.0 * 3.14 / 180.0;
-direction.asteroidNb = 24;
+direction.asteroidLife = 8;
+direction.asteroidNb = 1;
 direction.asteroidType = "basic";
 direction.accuracy = 0.1;
 wave.AddDirection(direction);

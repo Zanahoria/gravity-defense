@@ -21,7 +21,7 @@ function Update () {
 		if (this.GetComponent(Life).maxLife > 1 )
 		{
 			var decalVec : Vector3 = calcDecalVec();
-			var newAsteroid1 = Instantiate(this, this.transform.position + decalVec * this.transform.localScale.x / 2.0, Quaternion.identity);
+			var newAsteroid1 = Instantiate(this, this.transform.position + decalVec * (this.transform.localScale.x / 2.0 + 0.1), Quaternion.identity);
 			newAsteroid1.transform.localScale = this.transform.localScale / 2.0;
 			newAsteroid1.rigidbody.velocity = this.rigidbody.velocity + decalVec * 0.5;
 			newAsteroid1.GetComponent(Life).maxLife = this.GetComponent(Life).maxLife / 2;
@@ -31,7 +31,7 @@ function Update () {
 			++LevelDescriptor.nbEnemies;
 			LevelDescriptor.asteroidTab.Add(newAsteroid1.gameObject);
 			
-			var newAsteroid2 = Instantiate(this, this.transform.position - decalVec * this.transform.localScale.x / 2.0, Quaternion.identity);
+			var newAsteroid2 = Instantiate(this, this.transform.position - decalVec * (this.transform.localScale.x / 2.0 + 0.1), Quaternion.identity);
 			newAsteroid2.transform.localScale = this.transform.localScale / 2.0;
 			newAsteroid2.rigidbody.velocity = this.rigidbody.velocity - decalVec * 0.5;
 			newAsteroid2.GetComponent(Life).maxLife = this.GetComponent(Life).maxLife / 2;
