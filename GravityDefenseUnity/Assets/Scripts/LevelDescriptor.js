@@ -208,6 +208,7 @@ function PrepareWaves()
 				lineList.Add(line);
 				
 				var asteroid = instantiateAsteroid(direction, Vector3(25 * Mathf.Cos(angle), 0, 25 * Mathf.Sin(angle)));
+				asteroid.transform.position = Vector3((25 + asteroid.transform.localScale.x) * Mathf.Cos(angle), 0, (25 + asteroid.transform.localScale.x) * Mathf.Sin(angle));
 				asteroid.rigidbody.velocity = Vector3.zero;
 				asteroid.GetComponent(Gravity).enabled = false;
 				asteroid.rigidbody.detectCollisions = false;
