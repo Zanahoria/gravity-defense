@@ -18,7 +18,7 @@ function Start () {
 }
 
 function Update () {
-	if (transform.position.magnitude < 35)
+	if (transform.position.magnitude < DIST_DESPAWN)
 	{
 		if (isComing)
 			isComing = false;
