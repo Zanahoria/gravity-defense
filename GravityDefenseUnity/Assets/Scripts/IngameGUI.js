@@ -5,6 +5,7 @@ static var LackRessources : int = 0;
 static var buttonPushed : boolean = false;
 
 public var objectSelectedInfosStyle : GUIStyle;
+public var centerTextStyle : GUIStyle;
 public var globalInfosStyle : GUIStyle;
 public var windowStyle : GUIStyle;
 
@@ -39,13 +40,16 @@ function OnGUI ()
 		}
 	}
 	
-	// global infos display (resources, life)
+	// global infos display (resources, life, rounds)
 	GUI.Label(Rect (110, 10, 100, 50), "Resources: " + MineralResources.nbResources, globalInfosStyle);
 	if (Sun.sun)
 		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + Sun.sun.gameObject.GetComponent(Life).currentLife + "HP", globalInfosStyle);
 	else
 		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + 0 + "HP", globalInfosStyle);
 
+	GUI.Label(Rect (110, 50, 100, 50), "Round " + (LevelDescriptor.roundId + 1) + "/" + LevelDescriptor.rounds.Count, globalInfosStyle);
+	GUI.Label(Rect (Screen.width / 2.0 - 50, 10, 100, 50), LevelDescriptor.rounds[LevelDescriptor.roundId].name, centerTextStyle);
+	
 	if (LevelDescriptor.state == LevelDescriptor.ISWAITING)
 	{
 		// next wave button
@@ -63,21 +67,6 @@ function OnGUI ()
 		var name : String = "";
 		if (nameDefinition)
 			name = nameDefinition.objectName + " - ";
-		
-//		GUI.Label(Rect (Screen.width - 60, 5, 50, 16), name + "Life : " + Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP", objectSelectedInfosStyle);
-//
-//		if (Upgrade.SelectedObject.TypePlanet == Upgrade.BOUNCY)
-//		{
-//			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Bouncy Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
-//		}
-//		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.DESTRUCTION)
-//		{
-//			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Destruction Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
-//		}
-//		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.LASER)
-//		{
-//			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Laser Activated", objectSelectedInfosStyle);
-//		}
 	}
 	
 	// need more resources display
@@ -107,7 +96,7 @@ function OnGUI ()
 		ignoreEvent();
 	}
 		
-	// create upgrade window 
+	// create upgrade window
 	if (Upgrade.SelectedObject != null)
 		GUI.Window(0, upgradeRect, DoMyUpgradeWindow, "");
 }
