@@ -17,6 +17,15 @@ function Update () {
 			var settings : AsteroidSettings = this.gameObject.GetComponent(AsteroidSettings);
 			MineralResources.nbResources += settings.nbResourcesEarned;
 			--LevelDescriptor.nbEnemies;
+			var asteroidTab = LevelDescriptor.asteroidTab;
+			for (var i = 0; i < asteroidTab.Count; ++i)
+			{
+				if (asteroidTab[i].transform.GetInstanceID() == this.transform.GetInstanceID())
+				{
+					asteroidTab.RemoveAt(i);
+					break;
+				}
+			}
 			Destroy(this.gameObject);
 		}
 }

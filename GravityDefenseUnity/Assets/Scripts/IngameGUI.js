@@ -3,6 +3,11 @@
 static var speed = 1;
 static var LackRessources : int = 0;
 
+public var objectSelectedInfosStyle : GUIStyle;
+public var globalInfosStyle : GUIStyle;
+
+var upgradeRect : Rect = Rect (20, 20, 120, 50);
+
 function Start () {
 LackRessources = 0;
 }
@@ -31,11 +36,11 @@ function OnGUI ()
 	}
 	
 	// global infos display (resources, life)
-	GUI.Label(Rect (110, 10, 100, 50), "Resources: " + MineralResources.nbResources);
+	GUI.Label(Rect (110, 10, 100, 50), "Resources: " + MineralResources.nbResources, globalInfosStyle);
 	if (Sun.sun)
-		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + Sun.sun.gameObject.GetComponent(Life).currentLife + "HP");
+		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + Sun.sun.gameObject.GetComponent(Life).currentLife + "HP", globalInfosStyle);
 	else
-		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + 0 + "HP");
+		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + 0 + "HP", globalInfosStyle);
 
 	if (LevelDescriptor.state == LevelDescriptor.ISWAITING)
 	{
@@ -72,15 +77,19 @@ function OnGUI ()
 		if (nameDefinition)
 			name = nameDefinition.objectName + " - ";
 		
-		GUI.Label(Rect (Screen.width - 80, 5, 130, 50), name + "Life: " + Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP");
+		GUI.Label(Rect (Screen.width - 60, 5, 50, 16), name + "Life : " + Upgrade.SelectedObject.gameObject.GetComponent(Life).currentLife + "HP", objectSelectedInfosStyle);
 
 		if (Upgrade.SelectedObject.TypePlanet == Upgrade.BOUNCY)
 		{
-			GUI.Label(Rect (Screen.width - 150, 25, 200, 50), "Bouncy Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP");
+			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Bouncy Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
 		}
 		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.DESTRUCTION)
 		{
-			GUI.Label(Rect (Screen.width - 150, 25, 200, 50), "Destruction Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP");
+			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Destruction Shield : " + Upgrade.SelectedObject.gameObject.GetComponent(Shield).currentShield + "HP", objectSelectedInfosStyle);
+		}
+		else if (Upgrade.SelectedObject.TypePlanet == Upgrade.LASER)
+		{
+			GUI.Label(Rect (Screen.width - 60, 5 + 24, 50, 16), "Laser Activated", objectSelectedInfosStyle);
 		}
 	}
 	
@@ -109,25 +118,14 @@ function OnGUI ()
 	MineralResources.nbResources += 100;
 		}
 		
-		
-//	// number of enemies by direction display
-//	
-//	if (LevelDescriptor.state == LevelDescriptor.ISWAITING && LevelDescriptor.roundId < LevelDescriptor.rounds.Count)
-//	{
-//		for (var wave in LevelDescriptor.rounds[LevelDescriptor.roundId].waves)
-//		{
-//			for (var direction in wave.directions)
-//			{
-//				var angle : float = direction.angle;
-//				
-//				var position3D = Vector3(30 * Mathf.Cos(angle), 0, 30 * Mathf.Sin(angle));
-//				var position = Camera.mainCamera.WorldToScreenPoint(position3D);
-//				position.y = Screen.height - position.y;
-//				GUI.Label(Rect (position.x, position.y - 50 / 4, 200, 50), "x" + direction.asteroidNb);
-//			}
-//		}
-//	}
-//
+	// create upgrade window 
+	upgradeRect = GUI.Window (0, upgradeRect, DoMyUpgradeWindow, "My Window");
+
+}
+
+function DoMyUpgradeWindow (windowID : int) {
+    if (GUI.Button (Rect (10,20,100,20), "Hello World"))
+        print ("Got a click");
 }
 
 function WaitForIt()
