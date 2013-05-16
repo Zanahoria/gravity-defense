@@ -6,6 +6,15 @@ public var timeSince : float;
 function Start () {
 timeSince = Time.timeSinceLevelLoad;
 Time.timeScale = 1;
+	var asteroidTab = LevelDescriptor.asteroidTab;
+	for (var asteroid in asteroidTab)
+	{
+		if (asteroid == null)
+		{
+			asteroidTab.Clear();
+			break;
+		}
+	}
 }
 
 function Update () {
