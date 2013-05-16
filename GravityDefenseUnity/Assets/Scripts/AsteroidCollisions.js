@@ -23,7 +23,7 @@ function OnCollisionEnter(collision : Collision)
 	var DMGto1 : int = 0;
 	var DMGto2 : int = 0;
 
-	if (type1.TypePlanet != Upgrade.BOUNCY && type2.TypePlanet != Upgrade.BOUNCY)
+	if ((type1.TypePlanet != Upgrade.BOUNCY || shield1.currentShield == 0) && (type2.TypePlanet != Upgrade.BOUNCY || shield2.currentShield == 0))
 	{
 		var regist1 = this.GetComponent(RegisterLastVelocity);
 		var regist2 = collision.gameObject.GetComponent(RegisterLastVelocity);
