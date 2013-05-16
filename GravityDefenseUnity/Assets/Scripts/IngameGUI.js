@@ -22,7 +22,8 @@ function Start () {
 }
 
 function Update () {
-    if (Input.GetKeyDown(UnityEngine.KeyCode.Escape) && !Sun.isDead)
+    if (Input.GetKeyDown(UnityEngine.KeyCode.Escape) && !Sun.isDead &&
+    	LevelDescriptor.state != LevelDescriptor.ISFINISHED)
     {
     	Sun.sun.GetComponent(Life).currentLife = 0;
     }

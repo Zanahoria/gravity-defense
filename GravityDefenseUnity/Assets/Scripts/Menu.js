@@ -2,6 +2,7 @@
 
 public var Asteroid : GameObject;
 public var timeSince : float;
+public var titleStyle : GUIStyle;
 
 function Start () {
 timeSince = Time.timeSinceLevelLoad;
@@ -39,16 +40,18 @@ function Update () {
 
 function OnGUI()
 {
-	if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 65, 90, 40), "Level 1"))
+	GUI.Label(Rect (Screen.width / 2 - 100 / 2, 10, 100, 50), "Gravity Defense", titleStyle);
+
+	if (GUI.Button(Rect (Screen.width / 2 - 200 / 2, Screen.height / 2 - 65, 200, 40), "Level 1"))
 	{
 			LevelDescriptor.scriptName = "Level1";
 			Application.LoadLevel("gravitydefense");
 	}
-	else if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 20, 90, 40), "Level 2"))
+	else if (GUI.Button(Rect (Screen.width / 2 - 200 / 2, Screen.height / 2 - 20, 200, 40), "Level 2"))
 	{
 			LevelDescriptor.scriptName = "Level2";
 			Application.LoadLevel("gravitydefense");
 	}
-	else if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 + 25, 90, 40), "Quit"))
+	else if (GUI.Button(Rect (Screen.width / 2 - 200 / 2, Screen.height / 2 + 25, 200, 40), "Quit"))
 			Application.Quit();
 }

@@ -12,7 +12,7 @@ var direction : Direction;
 
 // first round
 round = LevelDescriptor.CreateRound();
-round.name = "add your first planet";
+round.name = "Add your first planet";
 wave = LevelDescriptor.CreateWave();
 
 direction = LevelDescriptor.CreateDirection();
@@ -28,7 +28,7 @@ LevelDescriptor.AddRound(round);
 
 // second round
 round = LevelDescriptor.CreateRound();
-round.name = "move your planet";
+round.name = "Move your planet";
 wave = LevelDescriptor.CreateWave();
 
 direction = LevelDescriptor.CreateDirection();
@@ -44,7 +44,7 @@ LevelDescriptor.AddRound(round);
 
 // third round
 round = LevelDescriptor.CreateRound();
-round.name = "Colision asteroids between them";
+round.name = "Collide asteroids between them";
 wave = LevelDescriptor.CreateWave();
 
 direction = LevelDescriptor.CreateDirection();
@@ -92,7 +92,7 @@ LevelDescriptor.AddRound(round);
 
 // fifth round
 round = LevelDescriptor.CreateRound();
-round.name = "New asteroid type";
+round.name = "Introduce Splittable asteroids";
 wave = LevelDescriptor.CreateWave();
 
 direction = LevelDescriptor.CreateDirection();
@@ -118,7 +118,7 @@ LevelDescriptor.AddRound(round);
 
 // sixth round
 round = LevelDescriptor.CreateRound();
-round.name = "Add lazer on a planet";
+round.name = "Add the laser upgrade on a planet";
 wave = LevelDescriptor.CreateWave();
 
 direction = LevelDescriptor.CreateDirection();
@@ -156,8 +156,8 @@ LevelDescriptor.AddRound(round);
 
 // seventh round
 round = LevelDescriptor.CreateRound();
-round.name = "Add a bouncy shield";
-round.moneyEarned = 50;
+round.name = "Add the bouncy shield upgrade on a planet";
+round.moneyEarned = 200;
 wave = LevelDescriptor.CreateWave();
 
 
@@ -196,7 +196,7 @@ LevelDescriptor.AddRound(round);
 
 // eight round
 round = LevelDescriptor.CreateRound();
-round.name = "add a new planet with destruction shield";
+round.name = "Create another planet and add the destruction shield upgrade on it";
 round.moneyEarned = 50;
 wave = LevelDescriptor.CreateWave();
 
