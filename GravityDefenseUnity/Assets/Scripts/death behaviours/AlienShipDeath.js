@@ -14,8 +14,6 @@ function Update () {
 			if (explosionPrefab)
 			    Instantiate(explosionPrefab, this.transform.position, Quaternion.identity);
 
-			var settings : AsteroidSettings = this.gameObject.GetComponent(AsteroidSettings);
-			MineralResources.nbResources += settings.nbResourcesEarned;
-			LevelDescriptor.RemoveAsteroid(this.gameObject);
+			LevelDescriptor.DestructAsteroid(this.gameObject);
 		}
 }

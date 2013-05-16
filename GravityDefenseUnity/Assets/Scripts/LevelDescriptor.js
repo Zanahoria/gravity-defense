@@ -115,9 +115,17 @@ function clearRounds()
 	}
 }
 
-static function RemoveAsteroid(asteroid : GameObject)
+static function DestructAsteroid(asteroid : GameObject) // when asteroid is destructed by player
 {
 	++StatInfos.nbAsteroidDestroyed;
+	var settings : AsteroidSettings = asteroid.gameObject.GetComponent(AsteroidSettings);
+	if (settings)
+		MineralResources.nbResources += settings.nbResourcesEarned;
+	RemoveAsteroid(asteroid);
+}
+
+static function RemoveAsteroid(asteroid : GameObject) // when asteroid is removed
+{
 	for (var i = 0; i < asteroidTab.Count; ++i)
 	{
 		if (asteroidTab[i].transform.GetInstanceID() == asteroid.transform.GetInstanceID())
@@ -181,17 +189,23 @@ function Update ()
 	}
 }
 
-function instantiateAsteroid(direction : Direction, position : Vector3)
+static function instantiateAsteroid(object : GameObject, position : Vector3)
 {
-	var asteroid = Instantiate(asteroidTypes[direction.asteroidType], position, Quaternion.identity);
+	var asteroid = Instantiate(object, position, Quaternion.identity);
+	asteroidTab.Add(asteroid.gameObject);
+	++nbEnemies;
+	return asteroid;
+}
+
+static function instantiateAsteroid(direction : Direction, position : Vector3)
+{
+	var asteroid = instantiateAsteroid(asteroidTypes[direction.asteroidType], position);
 	var life = asteroid.GetComponent(Life);
 	life.maxLife = direction.asteroidLife;
 	life.currentLife = direction.asteroidLife;
 	asteroid.GetComponent(AsteroidSettings).nbResourcesEarned = direction.moneyEarned;
 	asteroid.GetComponent(Gravity).attractCoef *= direction.attractCoef;
 	asteroid.transform.localScale *= direction.asteroidScale;
-	asteroidTab.Add(asteroid.gameObject);
-	++nbEnemies;
 	return asteroid;
 }
 

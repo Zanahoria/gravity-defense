@@ -26,9 +26,6 @@ function Update () {
 	else
 	{
 		if (!isComing)
-		{
-			--LevelDescriptor.nbEnemies;
 			LevelDescriptor.RemoveAsteroid(this.gameObject);
-		}
 	}
 }
