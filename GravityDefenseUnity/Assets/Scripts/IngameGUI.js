@@ -98,11 +98,11 @@ function OnGUI ()
 	}
 
 	// debug button to give resources
-	if (GUI.Button(Rect (10, Screen.height - 60, 90, 50), "Add 100\nRessources"))
-	{
-		MineralResources.nbResources += 100;
-		ignoreEvent();
-	}
+//	if (GUI.Button(Rect (10, Screen.height - 60, 90, 50), "Add 100\nRessources"))
+//	{
+//		MineralResources.nbResources += 100;
+//		ignoreEvent();
+//	}
 		
 	// create upgrade window
 	if (Upgrade.SelectedObject != null)
