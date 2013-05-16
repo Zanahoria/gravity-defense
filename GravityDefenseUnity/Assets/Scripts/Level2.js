@@ -250,51 +250,51 @@ var direction : Direction;
 //round.AddWave(wave);
 //LevelDescriptor.AddRound(round);
 //
-//// eighth round
-//round = LevelDescriptor.CreateRound();
-//round.name = "Alien invasion !";
-//round.moneyEarned = 200;
-//wave = LevelDescriptor.CreateWave();
-//
-//direction = LevelDescriptor.CreateDirection();
-//direction.angle = convertAngle(-45);
-//direction.asteroidType = "ship";
-//direction.asteroidNb = 20;
-//direction.asteroidLife = 1;
-//direction.moneyEarned = 1;
-//wave.AddDirection(direction);
-//
-//direction = LevelDescriptor.CreateDirection();
-//direction.angle = convertAngle(-40);
-//direction.asteroidType = "ship";
-//direction.asteroidNb = 20;
-//direction.asteroidLife = 1;
-//direction.moneyEarned = 1;
-//wave.AddDirection(direction);
-//
-//round.AddWave(wave);
-//
-//// wave 2
-//wave = LevelDescriptor.CreateWave();
-//
-//direction = LevelDescriptor.CreateDirection();
-//direction.angle = convertAngle(-60);
-//direction.asteroidType = "ship";
-//direction.asteroidNb = 20;
-//direction.asteroidLife = 1;
-//direction.moneyEarned = 1;
-//wave.AddDirection(direction);
-//
-//direction = LevelDescriptor.CreateDirection();
-//direction.angle = convertAngle(-25);
-//direction.asteroidType = "ship";
-//direction.asteroidNb = 20;
-//direction.asteroidLife = 1;
-//direction.moneyEarned = 1;
-//wave.AddDirection(direction);
-//
-//round.AddWave(wave);
-//LevelDescriptor.AddRound(round);
+// eighth round
+round = LevelDescriptor.CreateRound();
+round.name = "Alien invasion !";
+round.moneyEarned = 200;
+wave = LevelDescriptor.CreateWave();
+
+direction = LevelDescriptor.CreateDirection();
+direction.angle = convertAngle(-50);
+direction.asteroidType = "ship";
+direction.asteroidNb = 20;
+direction.asteroidLife = 1;
+direction.moneyEarned = 1;
+wave.AddDirection(direction);
+
+direction = LevelDescriptor.CreateDirection();
+direction.angle = convertAngle(-35);
+direction.asteroidType = "ship";
+direction.asteroidNb = 20;
+direction.asteroidLife = 1;
+direction.moneyEarned = 1;
+wave.AddDirection(direction);
+
+round.AddWave(wave);
+
+// wave 2
+wave = LevelDescriptor.CreateWave();
+
+direction = LevelDescriptor.CreateDirection();
+direction.angle = convertAngle(-65);
+direction.asteroidType = "ship";
+direction.asteroidNb = 20;
+direction.asteroidLife = 1;
+direction.moneyEarned = 1;
+wave.AddDirection(direction);
+
+direction = LevelDescriptor.CreateDirection();
+direction.angle = convertAngle(-20);
+direction.asteroidType = "ship";
+direction.asteroidNb = 20;
+direction.asteroidLife = 1;
+direction.moneyEarned = 1;
+wave.AddDirection(direction);
+
+round.AddWave(wave);
+LevelDescriptor.AddRound(round);
 
 // ninth round
 round = LevelDescriptor.CreateRound();
