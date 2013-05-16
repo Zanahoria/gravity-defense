@@ -84,7 +84,7 @@ function Start()
 {
 	roundId = 0;
 	nbWave = 0;
-	state = ISLOADING;
+	setState(ISLOADING);
 	nbEnemies = 0;
 	clearRounds();
 	for (var asteroid in asteroidTab)
@@ -117,6 +117,7 @@ function clearRounds()
 
 static function RemoveAsteroid(asteroid : GameObject)
 {
+	++StatInfos.nbAsteroidDestroyed;
 	for (var i = 0; i < asteroidTab.Count; ++i)
 	{
 		if (asteroidTab[i].transform.GetInstanceID() == asteroid.transform.GetInstanceID())
@@ -125,11 +126,33 @@ static function RemoveAsteroid(asteroid : GameObject)
 			break;
 		}
 	}
+	--nbEnemies;
 	Destroy(asteroid);
+}
+
+static function RemoveAsteroids()
+{
+	while (asteroidTab.Count)
+	{
+		Destroy(asteroidTab[0].gameObject);
+		asteroidTab.RemoveAt(0);
+	}
+}
+static function setState(newState : int)
+{
+	if (newState == ISROUNDING)
+		RemoveLines();
+	state = newState;
 }
 
 function Update ()
 {
+	if (Sun.isDead)
+	{
+		RemoveLines();
+		RemoveAsteroids();
+		return ;
+	}
 	if (roundId >= rounds.Count)
 		return ;
 	if (state == ISWAITING && !lineList.Count)
@@ -138,8 +161,6 @@ function Update ()
 	{
 		if (nbEnemies == 0)
 		{
-			if (nbWave == 0)
-				RemoveLines();
 			if (nbWave < rounds[roundId].waves.Count)
 				LaunchWave();
 			else
@@ -151,10 +172,10 @@ function Update ()
 					++roundId;
 					if (!Sun.isDead)
 						PrepareWaves();
-					state = ISWAITING;
+					setState(ISWAITING);
 				}
 				else
-					state = ISFINISHED;
+					setState(ISFINISHED);
 			}
 		}
 	}
@@ -169,7 +190,8 @@ function instantiateAsteroid(direction : Direction, position : Vector3)
 	asteroid.GetComponent(AsteroidSettings).nbResourcesEarned = direction.moneyEarned;
 	asteroid.GetComponent(Gravity).attractCoef *= direction.attractCoef;
 	asteroid.transform.localScale *= direction.asteroidScale;
-	asteroidTab.Add(asteroid);
+	asteroidTab.Add(asteroid.gameObject);
+	++nbEnemies;
 	return asteroid;
 }
 
@@ -184,7 +206,6 @@ function LaunchWave()
 			(40.0 + j) * Mathf.Sin(direction.angle + addAngle)));
 			asteroid.transform.position = Vector3((40.0 + j * (asteroid.transform.localScale.x * 2 + 1.0)) * Mathf.Cos(direction.angle + addAngle), 0,
 			(40.0 + j * (asteroid.transform.localScale.x * 2 + 1.0)) * Mathf.Sin(direction.angle + addAngle));
-			++nbEnemies;
 		}
 	}
 	++nbWave;
@@ -192,7 +213,7 @@ function LaunchWave()
 
 static function Load()
 {
-	state = ISWAITING;
+	setState(ISWAITING);
 }
 
 function PrepareWaves()
@@ -223,14 +244,16 @@ function PrepareWaves()
 	}
 }
 
-function RemoveLines()
+static function RemoveLines()
 {
-	for (var i : GameObject in lineList)
-		Destroy(i);
-	lineList.Clear();
-
-	for (var i : GameObject in asteroidInfos)
-		Destroy(i);
-	asteroidTab.Clear();
-	asteroidInfos.Clear();
+	while (lineList.Count)
+	{
+		Destroy(lineList[0].gameObject);
+		lineList.RemoveAt(0);
+	}
+	while (asteroidInfos.Count)
+	{
+		RemoveAsteroid(asteroidInfos[0].gameObject);
+		asteroidInfos.RemoveAt(0);
+	}
 }

@@ -9,17 +9,22 @@ public var lackresourcesStyle : GUIStyle;
 public var centerTextStyle : GUIStyle;
 public var globalInfosStyle : GUIStyle;
 public var windowStyle : GUIStyle;
+public var scoreStyle : GUIStyle;
+public var scoreOperationStyle : GUIStyle;
+
+public var nbEnnemiesDestruct : int = -1;
 
 static var upgradeRect : Rect = Rect (Screen.width - 200, 10, 210, 244);
 
 function Start () {
+	nbEnnemiesDestruct = -1;
 	LackRessources = 0;
 }
 
 function Update () {
-    if (Input.GetKeyDown(UnityEngine.KeyCode.Escape))
+    if (Input.GetKeyDown(UnityEngine.KeyCode.Escape) && !Sun.isDead)
     {
-    	Application.LoadLevel("Menu");
+    	Sun.sun.GetComponent(Life).currentLife = 0;
     }
 }
 
@@ -43,7 +48,7 @@ function OnGUI ()
 	
 	// global infos display (resources, life, rounds)
 	GUI.Label(Rect (110, 10, 100, 50), "Resources: " + MineralResources.nbResources, globalInfosStyle);
-	if (Sun.sun)
+	if (!Sun.isDead)
 		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + Sun.sun.gameObject.GetComponent(Life).currentLife + "HP", globalInfosStyle);
 	else
 		GUI.Label(Rect (110, 30, 100, 50), "Sun: " + 0 + "HP", globalInfosStyle);
@@ -57,7 +62,7 @@ function OnGUI ()
 		// next wave button
 		if (!Sun.isDead && GUI.Button(Rect (10,10,90,50), "Next wave !"))
 		{
-			LevelDescriptor.state = LevelDescriptor.ISROUNDING;
+			LevelDescriptor.setState(LevelDescriptor.ISROUNDING);
 			ignoreEvent();
     	}
    	}
@@ -82,18 +87,19 @@ function OnGUI ()
 	
 	// retry game button
 	
-	if (Sun.isDead)
+	if (Sun.isDead || LevelDescriptor.state == LevelDescriptor.ISFINISHED)
 	{
-		if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 42, 90, 40), "You loose...\nRetry ?"))
+		if (nbEnnemiesDestruct == -1)
+			nbEnnemiesDestruct = StatInfos.nbAsteroidDestroyed;
+		var sunLife = 0;
+		if(!Sun.isDead)
+			sunLife = Sun.sun.GetComponent(Life).currentLife;
+		GUI.Label(Rect (Screen.width / 2 - 100 / 2, Screen.height / 2 - 12 / 2 - 50 / 2 - 10, 100, 12), "" + nbEnnemiesDestruct +
+			" asteroids destroyed + " + (LevelDescriptor.roundId + 1) + " rounds + 100 * " + sunLife + " HP", scoreOperationStyle);
+		GUI.Label(Rect (Screen.width / 2 - 100 / 2, Screen.height / 2 - 50 / 2, 100, 50), "" + (nbEnnemiesDestruct + (LevelDescriptor.roundId + 1) + 100 * sunLife), scoreStyle);
+		if (GUI.Button(Rect (Screen.width / 2 - 110 / 2, Screen.height / 2 - 40 / 2 + 70, 110, 40), "Retry"))
 			Application.LoadLevel("gravitydefense");
-		else if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 + 2 / 2, 90, 40), "Back to menu"))
-			Application.LoadLevel("Menu");
-	}
-	else if (LevelDescriptor.state == LevelDescriptor.ISFINISHED)
-	{
-		if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 42, 90, 40), "You win!\nRetry ?"))
-			Application.LoadLevel("gravitydefense");
-		else if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 + 2 / 2, 90, 40), "Back to menu"))
+		else if (GUI.Button(Rect (Screen.width / 2 - 110 / 2, Screen.height / 2 - 40 / 2 + 70 + 42, 110, 40), "Back to menu"))
 			Application.LoadLevel("Menu");
 	}
 
