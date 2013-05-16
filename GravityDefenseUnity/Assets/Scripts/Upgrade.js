@@ -23,7 +23,7 @@ function UpgradeObject(type : int)
 		if (MineralResources.nbResources >= DESTRUCTION_COST)
 		{
 			TypePlanet = DESTRUCTION;
-			Upgrade.SelectedObject.gameObject.GetComponent(Shield).maxShield = 8;
+			Upgrade.SelectedObject.gameObject.GetComponent(Shield).maxShield = 20;
 			MineralResources.nbResources -= DESTRUCTION_COST;
 		}
 		else
@@ -34,7 +34,7 @@ function UpgradeObject(type : int)
 		if (MineralResources.nbResources >= BOUNCY_COST)
 		{
 			TypePlanet = BOUNCY;
-			Upgrade.SelectedObject.gameObject.GetComponent(Shield).maxShield = 4;
+			Upgrade.SelectedObject.gameObject.GetComponent(Shield).maxShield = 20;
 			MineralResources.nbResources -= BOUNCY_COST;
 		}
 		else
