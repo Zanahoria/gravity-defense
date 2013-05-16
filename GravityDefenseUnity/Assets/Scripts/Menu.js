@@ -41,7 +41,7 @@ function OnGUI()
 {
 	if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 65, 90, 40), "Level 1"))
 	{
-			LevelDescriptor.scriptName = "LevelScript";
+			LevelDescriptor.scriptName = "Level1";
 			Application.LoadLevel("gravitydefense");
 	}
 	else if (GUI.Button(Rect (Screen.width / 2 - 90 / 2, Screen.height / 2 - 20, 90, 40), "Level 2"))
