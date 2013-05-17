@@ -28,13 +28,6 @@ Why?
 
 General settings:
 	set the title of the level
-		input: data structure represents the level
-
-		output:
-
-		operation:
-		1: blah blah
-		2: bl
 	set the description of the level (objectives)
 	set the quantity of the initial money
 	set the quantity of money earned at each end of round
