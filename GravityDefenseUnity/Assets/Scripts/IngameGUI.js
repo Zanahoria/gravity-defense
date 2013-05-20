@@ -86,7 +86,7 @@ function OnGUI ()
 		LackRessources = 2;
 	}
 	
-	// retry game button
+	// retry game button and score display
 	
 	if (Sun.isDead || LevelDescriptor.state == LevelDescriptor.ISFINISHED)
 	{
@@ -96,8 +96,8 @@ function OnGUI ()
 		if(!Sun.isDead)
 			sunLife = Sun.sun.GetComponent(Life).currentLife;
 		GUI.Label(Rect (Screen.width / 2 - 100 / 2, Screen.height / 2 - 12 / 2 - 50 / 2 - 10, 100, 12), "" + nbEnnemiesDestruct +
-			" asteroids destroyed + " + (LevelDescriptor.roundId + 1) + " rounds + 100 * " + sunLife + " HP", scoreOperationStyle);
-		GUI.Label(Rect (Screen.width / 2 - 100 / 2, Screen.height / 2 - 50 / 2, 100, 50), "" + (nbEnnemiesDestruct + (LevelDescriptor.roundId + 1) + 100 * sunLife), scoreStyle);
+			" asteroids destroyed + 10 * " + (LevelDescriptor.roundId + 1) + " rounds + 100 * " + sunLife + " HP", scoreOperationStyle);
+		GUI.Label(Rect (Screen.width / 2 - 100 / 2, Screen.height / 2 - 50 / 2, 100, 50), "" + (nbEnnemiesDestruct + 10 * (LevelDescriptor.roundId + 1) + 100 * sunLife), scoreStyle);
 		if (GUI.Button(Rect (Screen.width / 2 - 110 / 2, Screen.height / 2 - 40 / 2 + 70, 110, 40), "Retry"))
 			Application.LoadLevel("gravitydefense");
 		else if (GUI.Button(Rect (Screen.width / 2 - 110 / 2, Screen.height / 2 - 40 / 2 + 70 + 42, 110, 40), "Back to menu"))
